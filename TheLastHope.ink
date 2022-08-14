@@ -10,13 +10,18 @@ VAR connectedToLocation1 = (home, location2)
 VAR connectedToLocation2 = (home)
 
 //player status variables here?
+VAR PLAYER_HEALTH_MAX = 10
 VAR playerHealth = 10
 VAR travelBlocked = false //might be useful
+
+//inventory variables here
+VAR playerAmmo = 0
 
 //inventory variables here?
 
 ->intro
 
+//note that this is a knot, not a function, so it can divert to dead
 == damagePlayer(health_to_lose)
 ~ playerHealth -= health_to_lose
 {playerHealth <= 0: ->dead}
@@ -72,6 +77,33 @@ It is night time.
 ~ timeOfDay = night
 }
 
+//i dont think this makes much sense as a storylet, but idk
+== combat(enemyName, enemyHealth, enemyDamage, ->ret)
+{enemyHealth <= 0:
+You see that {enemyName} has fallen to the ground, dead.
+->ret
+}
+
+Health: {playerHealth}
+Enemy Health: {enemyHealth}
+Ammo: {playerAmmo}
+
+You are fighting {enemyName}.
+They attack, dealing {enemyDamage} damage!
+-> damagePlayer(enemyDamage) ->
+
++[Punch {enemyName}.]
+    You swing your fists at the enemy, dealing 1 damage.
+    ~ enemyHealth -= 1
+    ->combat(enemyName, enemyHealth, enemyDamage, ret)
++{playerAmmo > 0} [Shoot {enemyName} (Costs 1 Ammo).]
+    You shoot {enemyName}, dealing 3 damage.
+    ~ enemyHealth -= 3
+    ->combat(enemyName, enemyHealth, enemyDamage, ret)
++[Flee.]
+    You run away as fast as you can.
+    ->ret
+    
 == intro
 pee pee poo poo this is the intro
 * [start the game.]
@@ -115,7 +147,7 @@ LIST replayableProps = repeatable, oneShot
 //get all the variables upfront
 ~ temp never_visited = not storylet_body_count //body has never been visited
 ~ temp replayable = propList ? repeatable
-~ temp cooldown_passed = time_since_played > storylet_cooldown
+~ temp cooldown_passed = time_since_played >= storylet_cooldown
 
 ~ temp correct_location = propList ? currentLocation
 ~ temp correct_time_of_day = storylet_start <= currentTime && currentTime <= storylet_end //it is within the hours the storylet is playable
@@ -127,11 +159,13 @@ LIST replayableProps = repeatable, oneShot
 //put threads to storylet descriptions here
 == storylets(->ret)
 <- generic_storylet_description(ret)
+<- rest_storylet_description(ret)
 <- scavenge_storylet_description(ret)
 ->DONE
 
 == storyletsPassTime
 -> generic_storylet_time ->
+-> rest_storylet_time ->
 -> scavenge_storylet_time ->
 ->->
 
@@ -162,6 +196,33 @@ generic storylet text, also it's 2 hours later now
 ~ currentTime += 2
 - ->->
 
+//props, and range of time it is available, time until it can be repeated, time storylet was last played
+VAR restStoryletProps = (repeatable, home)
+VAR restStoryletStart = 0
+VAR restStoryletEnd = 24
+VAR restStoryletCooldown = 0
+VAR restStoryletTimeSincePlayed = 25
+
+== rest_storylet_time
+~ genericStoryletTimeSincePlayed += 1
+->->
+
+== rest_storylet_description(->ret)
+{ StoryletPropTest(restStoryletProps, rest_storylet_body, restStoryletStart, restStoryletEnd, restStoryletCooldown, restStoryletTimeSincePlayed):
+	+ [Rest.]
+		-> rest_storylet_body ->
+		~ restStoryletTimeSincePlayed = 0
+	-> ret
+}
+-> DONE
+
+== rest_storylet_body
+You lie down and get some rest.
+~ temp amountHealed = PLAYER_HEALTH_MAX - playerHealth
+You heal {amountHealed} health, and {amountHealed} hours have passed.
+~ currentTime += amountHealed
+- ->->
+
 //scavenging option
 VAR scavengeStoryletProps = (repeatable, location1, location2)
 VAR scavengeStoryletStart = 8
@@ -186,9 +247,11 @@ VAR scavengeStoryletTimeSincePlayed = 24
 You comb the area for supplies...
     { shuffle:
     	- 	but find nothing.
-    	- 	and find some hidden away, but since you don't have an inventory yet, you can't take it home. :(
-    	- 	but you are attacked! Roll for initiative. (Just kidding, no combat yet.)
-    	    -> damagePlayer(1) ->
+    	- 	and find some ammo. (Ammo +2)
+    	    ~ playerAmmo +=2
+    	- 	but you are attacked by a zombie!
+    	    //-> damagePlayer(1) ->
+    	    -> combat("zombie", 5, 1, ->day_loop)
     }
 
 ~ currentTime += 1
