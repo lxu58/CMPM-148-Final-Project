@@ -5,8 +5,10 @@
 LIST combatResults = won, lost, fled, no_combat_yet
 VAR lastCombatResult = no_combat_yet
 
+VAR playerDodgeChance = 10
+
 //i dont think this makes much sense as a storylet, but idk
-== combat(enemyName, enemyHealth, enemyDamage, ->ret)
+== combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ->ret)
 {enemyHealth <= 0:
     ~ lastCombatResult = won
     You see that {enemyName} has fallen to the ground, dead.
@@ -20,17 +22,29 @@ Ammo: {scoreboard_Ammo}
 :::::::::::::::::::::::::::::::::::::::
 
 You are fighting {enemyName}.
-They attack, dealing {enemyDamage} damage!
+{RANDOM(1,100) <= playerDodgeChance:
+    You are attacked by {enemyName}, but you are able to dodge.
+- else:
+    They attack, dealing {enemyDamage} damage!
+}
 -> damagePlayer(enemyDamage) ->
 
 +[Punch {enemyName}.]
-    You swing your fists at the enemy, dealing 1 damage.
-    ~ enemyHealth -= 1
-    ->combat(enemyName, enemyHealth, enemyDamage, ret)
+    {RANDOM(1,100) > enemyDodgeChance:
+        You swing your fists at the enemy, dealing 1 damage.
+        ~ enemyHealth -= 1
+    - else:
+        You miss your punch!
+    }
+    ->combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
 +{scoreboard_Ammo > 0} [Shoot {enemyName} (Costs 1 Ammo).]
-    You shoot {enemyName}, dealing 3 damage.
-    ~ enemyHealth -= 3
-    ->combat(enemyName, enemyHealth, enemyDamage, ret)
+    {RANDOM(1,100) > enemyDodgeChance:
+        You shoot {enemyName}, dealing 3 damage.
+        ~ enemyHealth -= 3
+    - else:
+        You miss your shot!
+    }
+    ->combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
 +[Flee.]
     ~ lastCombatResult = fled
     You run away as fast as you can.

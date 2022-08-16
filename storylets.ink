@@ -161,7 +161,7 @@ You comb the area for supplies...
     	    ~ scoreboard_Ammo +=2
     	- 	but you are attacked by a zombie!
     	    //-> damagePlayer(1) ->
-    	    -> combat("zombie", 5, 1, ->day_loop)
+    	    -> combat("zombie", 5, 1, 10, ->day_loop)
     }
 
 -> passTime(1) ->
