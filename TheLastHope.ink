@@ -3,6 +3,8 @@ INCLUDE combat.ink
 INCLUDE storylets.ink
 INCLUDE playerInventory.ink
 INCLUDE community.ink
+INCLUDE intro.ink
+
 
 
 VAR scoreboard_zombiesEncountered = 0
@@ -32,7 +34,7 @@ LIST timeOfDay = (day), night
 VAR PLAYER_HEALTH_MAX = 10
 VAR playerHealth = 10
 
-->intro
+->title
 
 //checks the current time and decides if it is day or night
 //if time is greater than 24, sets it back to 0
@@ -63,10 +65,10 @@ It is night time.
 }
 ->->
 
-== intro
-pee pee poo poo this is the intro
+== title
+pee pee poo poo this is the title
 * [start the game.]
-    -> day_loop
+    -> intro
 ->END
 
 == day_loop
