@@ -38,9 +38,10 @@ You finally heard the word you speak.
 [[open eyes -&gt; chapter 0.2]]
 
 
-
+&lt;!-- 
 variable:
-set scoreboard_essentials = 1;</tw-passagedata><tw-passagedata pid="3" name=" chapter 0.2" tags="" position="200,500" size="100,100">You did your best, and finally opened your eyes.
+set scoreboard_essentials = 10;
+--&gt;</tw-passagedata><tw-passagedata pid="3" name=" chapter 0.2" tags="" position="200,500" size="100,100">You did your best, and finally opened your eyes.
 
 The white shining world makes you dizzy, and your brains hurts like a needle poking around your eyes. 
 
@@ -104,11 +105,121 @@ The zombie fells down, but you are sure your saw something coming out from this 
 
 The black cloak man offeres his hand.
 
-There is a word coming from the bottom of your memory sea, even though you are encountering the amnesia, you still remember his man.
+There is a word coming from the bottom of your memory sea, even though you are encountering the amnesia, you still remember this man.
 
 The man with elegant glasses.
 
-[[&quot;Gray...&quot; -&gt; chapter 1]]</tw-passagedata><tw-passagedata pid="8" name=" chapter 1" tags="" position="200,1500" size="100,100"></tw-passagedata></tw-storydata>
+[[&quot;Gray...&quot; -&gt; chapter 1 a man in Black]]</tw-passagedata><tw-passagedata pid="8" name=" chapter 1 a man in Black" tags="" position="200,1500" size="100,100">No matter how many times you try to think about this man, all memory you can get are mix of nonsense. You know he is Gray, and he is a person that helps you for something. But once you think about him, your face and chest are getting hot and pain. 
+
+&quot;Gray, do you know what happened? 
+
+ my brain... my memory seems not right.&quot;
+ 
+ 
+ &quot;yeah, I can definitely tell&quot;, Gray put down his pistol, and his expression looks funny with his elegant glasses. The face is twisted, and you can sense some emotions from it.
+ 
+ Maybe surprise, maybe helpless, and maybe a little bit anger?
+ 
+ Couple seconds later, his expression disappears.
+ 
+ &quot;Long story Roger, I don&#39;t know you have hobby of having conversation in front of those mentally dead audiences. Here, have some energy bars, we should burn the bodies and clean this place out. or we will have some special &quot;candles&quot; at night, I am sure zombies like joining the party as well&quot;
+ 
+ [[take energy bar -&gt; chapter1.11]]
+ [[burn and clean out the dead bodies -&gt; chapter1.12]]</tw-passagedata><tw-passagedata pid="9" name=" chapter1.11" tags="" position="400,1500" size="100,100">You feel stuffing. and put the rest of energy bars and water in your bag.
+
+&quot;Wow, feel better now, I should really take care of this essential part&quot;
+
+You look at the Gray, he is burning the dead bodies without any sad emotions. 
+
+Such a cold blood man, you think.
+
+&quot;But he is right, we should clean this out, this place looks quite nice, it has fences around the ground with about 200 square meters land. More important, it has building and fresh land for farming. &quot;
+
+[[Go help gray to clean it out -&gt; chapter1.2]]
+
+
+
+&lt;!-- 
+Variable Change
+scoreboard_essentials += essentials_get_alot
+UI
+(from now on. display the essential amount)
+Essential:   scoreboard_essentials
+--&gt;
+
+</tw-passagedata><tw-passagedata pid="10" name=" chapter1.12" tags="" position="400,1700" size="100,100"> &quot;AHHa, I want to do the work, but my hands and legs are not listen to me!&quot;
+ 
+ [[take energy bar -&gt; chapter1.11]]</tw-passagedata><tw-passagedata pid="11" name=" chapter1.2" tags="" position="200,1700" size="100,100">At night, you and Gray sit around the campfire.
+
+&quot;In short, the experimenter was assaulted by zombies. I should expect it, damn it.&quot;
+
+&quot;Experiment? What are you talking Gray, is it accident?&quot;
+
+&quot;No it&#39;s not!  It doesn&#39;t matter now.&quot; Gray slowly takes out his pistol, and a bullet in the clip. He looks at his pistol and starts thinking.
+
+&quot;It&#39;s the last one, isn&#39;t it?&quot;
+
+&quot;Yes, and I will use it once it&#39;s needed.&quot;
+
+&quot;Hum, then what&#39;s your plan now, why are you here?&quot;
+
+&quot;I am here for hunt, the shelter, which is about 5 km away from here has gone, people left there 3 days ago, I just thought the clown maybe still have, so I am coming for the show.&quot;
+
+&quot;Do I let you down?&quot;
+
+&quot;No... no as always.&quot; Gray put back his pistol and then
+[[start talking -&gt; chapter 1.3]]
+
+
+
+&lt;!-- 
+UI
+Essential:   scoreboard_essentials
+--&gt;</tw-passagedata><tw-passagedata pid="12" name=" chapter 1.3" tags="" position="200,1900" size="100,100">&quot;I will check out the place around this area, you don&#39;t move, I will get back before midnight.&quot;
+
+&quot;I can help as well, I am not BOSS anymore, I can help you during the exploration.&quot;
+
+&quot;You can help?! A BBQ rack is more useful than you, moreover, you should.....
+ actually, maybe you can help&quot;
+ 
+ &quot;?
+ What&#39;s the [[plan -&gt; 1.4]]?&quot; 
+
+&lt;!-- 
+UI
+Essential:   scoreboard_essentials
+--&gt;</tw-passagedata><tw-passagedata pid="13" name=" 1.4" tags="" position="200,2100" size="100,100">&quot;We go search the neighborhood around this area in the morning, and come back before  mid-night, so the zombies won&#39;t have party at our base。
+ and you, your job is to explore the area,  be a lure and dance with those brain dead zombies.&quot; The Gray is smelling weridly and making some horrible noise. 
+ 
+ &quot;Are you serious?&quot; Your face is covered with dirt, and they form a shape of a question mark. You can&#39;t believe Gray is going to send you to die.
+  
+ &quot;You don&#39;t remember those zombies won&#39;t attack you, do you.&quot; Gray has a weird smelling on his face.
+ 
+ &quot;The zombie almost killed me, are you serious?&quot; By looking at Gray&#39;s face, you know he is not joking about this. 
+
+&quot;That zombie just got infested not long time ago, that might because you doing &quot;great&quot; on your company, so those people want to kill you themselves based on what you did to them. Hahaha!&quot; 
+(It seems like Gray know something about the zombies, and I might be related to it, I have bad feeling about asking this, and head hurts once I think about it. 
+
+&quot;Trust yourself, Roger, you have so much confidence, what&#39;s wrong with you this time?&quot; Gray emphasizes the &quot;confidence&quot;.
+
+&quot;Fine, we will talk about it tomorrow.&quot; 
+You know Gray is not going to tell you the story, and your head is refusing to accept for information about the zombies, so choose to sleep and move toward.
+
+[[sleep -&gt; chapter1.5]]
+ 
+
+
+
+&lt;!-- 
+UI
+Essential:   scoreboard_essentials
+--&gt;</tw-passagedata><tw-passagedata pid="14" name=" chapter1.5" tags="" position="200,2300" size="100,100">
+
+
+&lt;!-- 
+UI
+Essential:   scoreboard_essentials
+--&gt;</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _createForOfIteratorHelper(e,t){var n,r="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=_unsupportedIterableToArray(e))||t&&e&&"number"==typeof e.length)return r&&(e=r),n=0,{s:t=function(){},n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(e){throw e},f:t};throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,o=!0,i=!1;return{s:function(){r=r.call(e)},n:function(){var e=r.next();return o=e.done,e},e:function(e){i=!0,a=e},f:function(){try{o||null==r.return||r.return()}finally{if(i)throw a}}}}function _slicedToArray(e,t){return _arrayWithHoles(e)||_iterableToArrayLimit(e,t)||_unsupportedIterableToArray(e,t)||_nonIterableRest()}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _iterableToArrayLimit(e,t){var n=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=n){var r,a,o=[],i=!0,s=!1;try{for(n=n.call(e);!(i=(r=n.next()).done)&&(o.push(r.value),!t||o.length!==t);i=!0);}catch(e){s=!0,a=e}finally{try{i||null==n.return||n.return()}finally{if(s)throw a}}return o}}function _arrayWithHoles(e){if(Array.isArray(e))return e}function _toConsumableArray(e){return _arrayWithoutHoles(e)||_iterableToArray(e)||_unsupportedIterableToArray(e)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(e,t){if(e){if("string"==typeof e)return _arrayLikeToArray(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Map"===(n="Object"===n&&e.constructor?e.constructor.name:n)||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?_arrayLikeToArray(e,t):void 0}}function _iterableToArray(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}function _arrayWithoutHoles(e){if(Array.isArray(e))return _arrayLikeToArray(e)}function _arrayLikeToArray(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
