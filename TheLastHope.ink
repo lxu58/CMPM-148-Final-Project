@@ -158,43 +158,16 @@ LIST replayableProps = repeatable, oneShot
 
 //put threads to storylet descriptions here
 == storylets(->ret)
-<- generic_storylet_description(ret)
 <- rest_storylet_description(ret)
 <- scavenge_storylet_description(ret)
 ->DONE
 
 == storyletsPassTime
--> generic_storylet_time ->
 -> rest_storylet_time ->
 -> scavenge_storylet_time ->
 ->->
 
 //storylets and their descriptions go here
-
-//props, and range of time it is available, time until it can be repeated, time storylet was last played
-VAR genericStoryletProps = (repeatable, home)
-VAR genericStoryletStart = 6
-VAR genericStoryletEnd = 16
-VAR genericStoryletCooldown = 6
-VAR genericStoryletTimeSincePlayed = 24
-
-== generic_storylet_time
-~ genericStoryletTimeSincePlayed += 1
-->->
-
-== generic_storylet_description(->ret)
-{ StoryletPropTest(genericStoryletProps, generic_storylet_body, genericStoryletStart, genericStoryletEnd, genericStoryletCooldown, genericStoryletTimeSincePlayed):
-	+ [do the generic storylet.]
-		-> generic_storylet_body ->
-		~ genericStoryletTimeSincePlayed = 0
-	-> ret
-}
--> DONE
-
-== generic_storylet_body
-generic storylet text, also it's 2 hours later now
-~ currentTime += 2
-- ->->
 
 //props, and range of time it is available, time until it can be repeated, time storylet was last played
 VAR restStoryletProps = (repeatable, home)
@@ -204,7 +177,7 @@ VAR restStoryletCooldown = 0
 VAR restStoryletTimeSincePlayed = 25
 
 == rest_storylet_time
-~ genericStoryletTimeSincePlayed += 1
+~ restStoryletTimeSincePlayed += 1
 ->->
 
 == rest_storylet_description(->ret)
