@@ -2,6 +2,7 @@
 
 //below are possible storylet properties
 LIST replayableProps = repeatable, oneShot
+LIST metaLocationProps = anywhere
 
 //this knot tests to see if a storylet should be available
 //it is called from a storylet descrioption
@@ -12,8 +13,8 @@ LIST replayableProps = repeatable, oneShot
 ~ temp replayable = propList ? repeatable
 ~ temp cooldown_passed = time_since_played >= storylet_cooldown
 
-~ temp correct_location = propList ? currentLocation
-~ temp correct_time_of_day = storylet_start <= currentTime && currentTime <= storylet_end //it is within the hours the storylet is playable
+~ temp correct_location = propList ? currentLocation || propList ? anywhere
+~ temp correct_time_of_day = storylet_start <= time_currentTime && time_currentTime <= storylet_end //it is within the hours the storylet is playable
 
 ~ temp playable = never_visited || replayable
 
@@ -21,17 +22,57 @@ LIST replayableProps = repeatable, oneShot
 
 //put threads to storylet descriptions here
 == storylets(->ret)
+<- wait_storylet_description(ret)
 <- rest_storylet_description(ret)
+<- status_storylet_description(ret)
 <- scavenge_storylet_description(ret)
 ->DONE
 
 == storyletsPassTime
+-> wait_storylet_time ->
 -> rest_storylet_time ->
+-> status_storylet_time ->
 -> scavenge_storylet_time ->
 ->->
 
 // ---------- STORYLETS ----------
 //storylets and their descriptions go here
+
+//props, and range of time it is available, time until it can be repeated, time storylet was last played
+VAR waitStoryletProps = (repeatable, anywhere)
+VAR waitStoryletStart = 0
+VAR waitStoryletEnd = 24
+VAR waitStoryletCooldown = 0
+VAR waitStoryletTimeSincePlayed = 25
+
+== wait_storylet_time
+~ waitStoryletTimeSincePlayed += 1
+->->
+
+== wait_storylet_description(->ret)
+{ StoryletPropTest(waitStoryletProps, wait_storylet_body, waitStoryletStart, waitStoryletEnd, waitStoryletCooldown, waitStoryletTimeSincePlayed):
+	+ [Wait.]
+		-> wait_storylet_body ->
+		~ waitStoryletTimeSincePlayed = 0
+	-> ret
+}
+-> DONE
+
+== wait_storylet_body
+How long will you wait?
+~ temp timeToWait = 0
++[Nevermind.]
+    ->->
++[Wait 1 hour.]
+    ~ timeToWait = 1
++[Wait 6 hours.]
+    ~ timeToWait = 6
++[Wait 12 hours.]
+    ~ timeToWait = 12
++[Wait 24 hours.]
+    ~ timeToWait = 24
+- ~ passTime(timeToWait)
+->->
 
 //props, and range of time it is available, time until it can be repeated, time storylet was last played
 VAR restStoryletProps = (repeatable, home)
@@ -58,7 +99,36 @@ You lie down and get some rest.
 ~ temp amountHealed = PLAYER_HEALTH_MAX - playerHealth
 You heal {amountHealed} health, and {amountHealed} hours have passed.
 ~ playerHealth += amountHealed
-~ currentTime += amountHealed
+~ passTime(amountHealed)
+- ->->
+
+//props, and range of time it is available, time until it can be repeated, time storylet was last played
+VAR statusStoryletProps = (repeatable, anywhere)
+VAR statusStoryletStart = 0
+VAR statusStoryletEnd = 24
+VAR statusStoryletCooldown = 0
+VAR statusStoryletTimeSincePlayed = 25
+
+== status_storylet_time
+~ statusStoryletTimeSincePlayed += 1
+->->
+
+== status_storylet_description(->ret)
+{ StoryletPropTest(statusStoryletProps, status_storylet_body, statusStoryletStart, statusStoryletEnd, statusStoryletCooldown, statusStoryletTimeSincePlayed):
+	+ [Check your status.]
+		-> status_storylet_body ->
+		~ statusStoryletTimeSincePlayed = 0
+	-> ret
+}
+-> DONE
+
+== status_storylet_body
++[Check health.]
+    Health: {playerHealth}
++[Check how many days have passed.]
+    Days Passed: {time_daysGone}
++[Check inventory.]
+    -> displayInventory ->
 - ->->
 
 //scavenging option
@@ -86,11 +156,11 @@ You comb the area for supplies...
     { shuffle:
     	- 	but find nothing.
     	- 	and find some ammo. (Ammo +2)
-    	    ~ playerAmmo +=2
+    	    ~ scoreboard_Ammo +=2
     	- 	but you are attacked by a zombie!
     	    //-> damagePlayer(1) ->
     	    -> combat("zombie", 5, 1, ->day_loop)
     }
 
-~ currentTime += 1
+~ passTime(1)
 - ->->

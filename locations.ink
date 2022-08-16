@@ -27,7 +27,7 @@ VAR connectedToLocation2 = (home)
 
 //adds an hour onto the time and changes the location
 == function travel(location)
-~ currentTime += 1
+~ passTime(1)
 ~ currentLocation = location
 
 // here you can put a description of the current location

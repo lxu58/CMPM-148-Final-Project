@@ -8,9 +8,11 @@ You see that {enemyName} has fallen to the ground, dead.
 ->ret
 }
 
+:::::::::::::::::::::::::::::::::::::::
 Health: {playerHealth}
 Enemy Health: {enemyHealth}
-Ammo: {playerAmmo}
+Ammo: {scoreboard_Ammo}
+:::::::::::::::::::::::::::::::::::::::
 
 You are fighting {enemyName}.
 They attack, dealing {enemyDamage} damage!
@@ -20,7 +22,7 @@ They attack, dealing {enemyDamage} damage!
     You swing your fists at the enemy, dealing 1 damage.
     ~ enemyHealth -= 1
     ->combat(enemyName, enemyHealth, enemyDamage, ret)
-+{playerAmmo > 0} [Shoot {enemyName} (Costs 1 Ammo).]
++{scoreboard_Ammo > 0} [Shoot {enemyName} (Costs 1 Ammo).]
     You shoot {enemyName}, dealing 3 damage.
     ~ enemyHealth -= 3
     ->combat(enemyName, enemyHealth, enemyDamage, ret)
