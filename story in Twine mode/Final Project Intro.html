@@ -213,13 +213,360 @@ You know Gray is not going to tell you the story, and your head is refusing to a
 &lt;!-- 
 UI
 Essential:   scoreboard_essentials
---&gt;</tw-passagedata><tw-passagedata pid="14" name=" chapter1.5" tags="" position="200,2300" size="100,100">
+--&gt;</tw-passagedata><tw-passagedata pid="14" name=" chapter1.5" tags="" position="200,2300" size="100,100">July 1st, 2030
+
+Morning, 
+
+The first light you can see is not from the bottom of feather curtain at your home. 
+
+And the bed your sleep is no longer made by the Velvet, 
+
+The enjoyable daily life has completely gone. 
+
+There is something left, worry, ambition, and a little ash from ember of regret 
+
+[[Get up -&gt; chapter 2 communities]]
+
+
+&lt;!-- 
+variable change
+scoreboard_essentials += essentials_cost_daily
+
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;</tw-passagedata><tw-passagedata pid="15" name=" chapter 2 communities" tags="" position="200,2500" size="100,100">Gray sits next to the campfire and looks at you. Then he laughs like he always did. 
+
+&quot;Another day! Glad you still alive!&quot;
+
+&quot;Bad joke like always, Gray, when we should leave it&#39;s 7:00 in the morning, we can go a lot of place today if we have time.&quot;
+
+&quot;Ha, such a busy man. Tose, Main, Heaven, and Toe. Which one you wanna go first?&quot;
+
+&quot;Are those pop music?&quot; You don&#39;t understand what Gray is talking about.
+
+&quot;What a boring man, you only know money, don&#39;t you. 
+
+San Tose, the Military base on the north, it still has weapons, ammos, and a lot of equipment in it. No double, the refugee will go that place. The people who got attacked days ago are getting crazy, I believe San Tose are full of agressive people right now. 
+
+Main Drive Station, an old train station at this birds don&#39;t shit countryside area, it&#39;s on west of our base. Those pathetic people want to leave from this place so hard. But none of them know how to drive the train nor have gasoline. Hahaha stupid nut!&quot;
+
+&quot;But we don&#39;t know how to make trains move either.&quot;
+
+&quot;Shut up，
+
+[[the other twos -&gt; chapter 2.1]]
 
 
 &lt;!-- 
 UI
-Essential:   scoreboard_essentials
---&gt;</tw-passagedata></tw-storydata>
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;
+
+</tw-passagedata><tw-passagedata pid="16" name=" chapter 2.1" tags="" position="200,2700" size="100,100">The other two are Heaven Residential District and Shopping Mall: Lu&#39;s Toe.
+
+The Heaven is the poorest neighborhood in this area, but right now it&#39;s the place for hope, I heard there are a lot of people there and they have been living there for a long time. 
+
+Lu&#39;s Toe is a department Mall, food, alcohol, smokes. and more alcohol, that is a real heaven compare to that Slum. 
+
+So where do you want to go, BOOOSS?&quot;
+
+
+&quot; let&#39;s go 
+[[Military Base: San Tose -&gt; chapter 2.1]] (incomplete)
+[[Train Station:  Main Drive Station -&gt; chapter 2.1]](incomplete)
+[[Residential District: Heaven -&gt; chapter 2.1]](incomplete)
+[[Shopping Mall:  Lu&#39;s Toe -&gt; chapter 2.241]]&quot;
+	
+
+
+&lt;!-- 
+variable change
+scoreboard_essentials += essentials_cost_daily
+
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;</tw-passagedata><tw-passagedata pid="17" name=" chapter 2.241" tags="" position="200,2900" size="100,100">&quot;Good choose, we do need alcohol to make our lives better. Even though I am not a big fan of it, I am pretty sure someone will like it.&quot;  Gray rolled up his sleeves, there is a be a beautiful white watch covered with some blood. You don&#39;t know if he intentionally wants to keep it dirty or not. The watch itself looks pretty old style. The top of the watch will open up when he clips the front of it. Most people will put a picture on the back of the watch cover, but what does Gray have? This crazy man doesn&#39;t can be predicted in a normal way. 
+
+Gray carefully hides the watch under the sleeves and lift the elegant glasses, and say. 
+&quot;It might take one hour to get there. Let&#39;s go if you are ready&quot; 
+
+&quot;I am [[ready -&gt; chapter 2.24 Circle]]&quot;
+
+
+
+&lt;!-- 
+
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+
+--&gt;</tw-passagedata><tw-passagedata pid="18" name=" chapter 2.24 Circle" tags="" position="500,2900" size="100,100">&lt;!-- 
+variable declare
+int flag_move = 0;
+bool flag_explore = false;
+bool flag_talkGray = false;
+--&gt;
+
+
+
+[[1. Move to west -&gt;chapter 2.24 Circle 1]]
+[[ 2. Explore the area -&gt;chapter 2.24 Circle 2]]
+[[ 3. Talk to Gray -&gt;chapter 2.24 Circle 3]]
+
+
+&lt;!-- 
+
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+
+--&gt;</tw-passagedata><tw-passagedata pid="19" name="chapter 2.24 Circle 1" tags="" position="500,3100" size="100,100">
+&lt;!-- 
+variable change
+time_currentTime += time_actionCost_1hour 
+scoreboard_essentials += essentials_cost_action
+flag_move ++;
+--&gt;
+
+if (flag_move == 1)
+You are getting close to the mall. 
+[[1. Move to west -&gt;chapter 2.24 Circle 1]]
+[[ 2. Explore the area -&gt;chapter 2.24 Circle 2]]
+[[ 3. Talk to Gray -&gt;chapter 2.24 Circle 3]]
+
+
+if (flag_move == 2)
+You are arrived. The shopping Mall Lu&#39;s Toe is in front of you.
+&quot;It&#39;s too quiet.&quot; Gray whispered.
+[[check inside -&gt; chapter 2.25]]
+
+
+
+
+&lt;!-- 
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;</tw-passagedata><tw-passagedata pid="20" name="chapter 2.24 Circle 2" tags="" position="700,3100" size="100,100">
+&lt;!-- 
+variable change
+time_currentTime += time_actionCost_1hour 
+scoreboard_essentials += essentials_cost_action
+
+--&gt;
+
+
+(if flag_explore == false)
+You found some corpse with weapons and ammos, you pick it up but not sure what to do with it, so u put into your backpack.
+
+[[1. Move to west -&gt;chapter 2.24 Circle 1]]
+[[2. Talk to Gray -&gt;chapter 2.24 Circle 3]]
+
+
+(if flag_explore == true)
+you didn&#39;t find anything
+
+[[1. Move to west -&gt;chapter 2.24 Circle 1]]
+[[2. Talk to Gray -&gt;chapter 2.24 Circle 3]]
+
+
+&lt;!-- 
+variable change at the end
+flag_explore = true;
+
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;</tw-passagedata><tw-passagedata pid="21" name="chapter 2.24 Circle 3" tags="" position="900,3100" size="100,100">&lt;!-- 
+variable change
+time_currentTime += time_actionCost_1hour 
+scoreboard_essentials += essentials_cost_action
+
+--&gt;
+
+
+if(flag_talkGray == flase;)
+&quot;How did you know I am here?&quot;
+
+&quot;Because I am the one who left you&quot; Gray mentioned  a horrible fact like nothing happened. 
+
+He continues, &quot;Something happened before that, I thought you were a bastard, and you  really are. And now I think it back, you might be right, we all small piece of shit compared to people who played the game of the world. But at least they got what they deserved.&quot;
+
+&quot;Now, less talking, we need to get close to the mall, zombies will attack us, if we keep our guard&#39;s down.&quot;
+
+You are surprised that Gray said something serious. Sadly, right now you are not able to understand what he said, but maybe future..
+
+[[1. Move to west -&gt;chapter 2.24 Circle 1]]
+[[ 2. Explore the area -&gt;chapter 2.24 Circle 2]]
+
+if(flag_talkGray == true;)
+
+&quot;We have no time to waste&quot;
+
+
+[[1. Move to west -&gt;chapter 2.24 Circle 1]]
+[[ 2. Explore the area -&gt;chapter 2.24 Circle 2]]
+
+
+&lt;!-- 
+variable change at the end
+flag_talkGray = true;
+
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;</tw-passagedata><tw-passagedata pid="22" name=" chapter 2.25" tags="" position="200,3300" size="100,100">&lt;!-- 
+variable change
+time_currentTime += time_actionCost_1hour 
+scoreboard_essentials += essentials_cost_action
+--&gt;
+
+
+Once you enter Lu&#39;s Toe, you immediately heard a loud clear voice. 
+&quot;Welcome, nice to doing business with you!!!&quot; the voice said. 
+
+couple seconds later, he is walking to you. It&#39;s a giant man with scar crossing his eyes. 
+It&#39;s a man with typical soldier face. But he is wearing a coat with animation character on it. It&#39;s werid, because those characteristic didn&#39;t work together at all. Quickly there is a word coming out of your head --- split. 
+
+Seems like Gray wants to say something, but you speak before he causes any trouble
+
+&quot;Yes, nice to see you my friend, but is it the first time we meet?&quot;
+
+&quot;Maybe yes, maybe not. But since you are coming, are you willing to do business with us, this place just got attacked by zombies last night, and not safe at all, you will help us right? you will I guess!&quot; This split man put one of his hand into the pocket, you know there is something there. 
+
+Gray notice something, and he is looking at you, you know you should carefully pick the word you want to say next
+
+if(flag_explore == true){
+[[&quot;I got some weapon, and have a very good place to live at, you wanna join friend?&quot;-&gt;chapter 2.251]]
+}
+[[&quot;We can do bussiness, how can I help&quot; -&gt; chapter 2.252]]
+[[&quot;Bussiness is for win-win, I don&#39;t make trade that is losing. &quot;-&gt;chapter 2.253]]
+
+
+
+&lt;!-- 
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;</tw-passagedata><tw-passagedata pid="23" name="chapter 2.251" tags="" position="100,3500" size="100,100">&quot;Haha, what a brave and smart business man, you even know what we want. You mentioned a place to live, is that your base? Mind bring my people to your base? We shouldn&#39;t stay here for any longer, the night is coming.&quot;
+
+&quot;Agree welcome on board&quot;, you think about it a little bit, and quickly response because you saw this group of people not only have children but also have old people as well.
+&quot;The mall is great place to hide, as long as it&#39;s safe. But now you need a place, and I need hands, it&#39;s a great  bussiness&quot; you added.
+
+&quot;Thank you man! Let&#39;s grab what we have here and head to your place!&quot; The split man goes back to normal, and you just notice this place still have a lot of stuffs left here.
+
+[[&quot;you package the stuffs and heading back to your base&quot; -&gt; chapter 2 end]]
+
+&lt;!-- 
+variable change
+
+scoreboard_essentials += (23 - time_currentTime) * essentials_get_fine
+--&gt;
+
+&lt;!-- 
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;</tw-passagedata><tw-passagedata pid="24" name=" chapter 2.252" tags="" position="300,3500" size="100,100">&quot;There are two people running away from here last night, and they took most of the weapons and ammos, they might be still in this area, can you find them, and bring their weapon back to us?&quot;
+
+&quot;Okay, we will do it, can you lead your people and head to our base, so we can save time from meeting up again&quot;
+
+&quot;Sure, haha, I will let all people know we are going to have a new base, but it might take a while because we have 50 people, you can grab some food and go search for the weapons&quot; 
+
+You look around, notice there are only 20 people here,
+(50? This old man really has mental issue..)
+
+[[start exploration around this place -&gt; chapter 2.2522]]
+
+&lt;!-- 
+UI
+(display date and time from now on)
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;
+</tw-passagedata><tw-passagedata pid="25" name="chapter 2.253" tags="" position="500,3500" size="100,100">Dead end</tw-passagedata><tw-passagedata pid="26" name=" chapter 2 end" tags="" position="200,3900" size="100,100">&lt;!-- 
+variable change
+time_currentTime = 23:00
+--&gt;
+
+You standing on a little hill that is not far away from the base. You look at the peole you and Roger met today, and make a very weird smile. 
+
+A leaf floating in air and finally, hit the ground. You lift your glasses and open up the notebook.
+
+&quot;
+Date: 7/1 
+Target: #001
+Status: Lost memory
+Action: Start building his community, and survive from this death world caused by himself. 
+Feedback: I can&#39;t wait to see him lost everything. You deserve more lost and despair.
+
+by G
+&quot;
+
+You put down your notebook, and rolled up your sleeves again. And look at the picture on the watch, they are smelling like always, your wife and daughter, but only on the picture. You wipe away the liquid coming from your eyes, and walk back to the campfire.
+
+[[NEXT DAY -&gt; intro end]]
+
+
+
+
+
+
+&lt;!-- 
+ NO UI for this
+--&gt;
+
+
+&lt;!-- 
+variable change
+reset
+time_currentTime = 7:00
+--&gt;</tw-passagedata><tw-passagedata pid="27" name=" chapter 2.2522" tags="" position="300,3700" size="100,100">&lt;!-- 
+variable change
+time_currentTime += time_actionCost_1hour 
+scoreboard_essentials += essentials_get_alot
+--&gt;
+
+
+You and Gray finally found those people, but they were died, you pick up the weapons and supplment and heading to the base.
+
+[[base -&gt; chapter 2 end]]
+
+
+
+
+
+
+&lt;!-- 
+UI
+Date: 7/1/2030
+Time: time_currentTime :00
+Essential:   scoreboard_essentials 
+--&gt;</tw-passagedata><tw-passagedata pid="28" name=" intro end" tags="" position="200,4200" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _createForOfIteratorHelper(e,t){var n,r="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=_unsupportedIterableToArray(e))||t&&e&&"number"==typeof e.length)return r&&(e=r),n=0,{s:t=function(){},n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(e){throw e},f:t};throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,o=!0,i=!1;return{s:function(){r=r.call(e)},n:function(){var e=r.next();return o=e.done,e},e:function(e){i=!0,a=e},f:function(){try{o||null==r.return||r.return()}finally{if(i)throw a}}}}function _slicedToArray(e,t){return _arrayWithHoles(e)||_iterableToArrayLimit(e,t)||_unsupportedIterableToArray(e,t)||_nonIterableRest()}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _iterableToArrayLimit(e,t){var n=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=n){var r,a,o=[],i=!0,s=!1;try{for(n=n.call(e);!(i=(r=n.next()).done)&&(o.push(r.value),!t||o.length!==t);i=!0);}catch(e){s=!0,a=e}finally{try{i||null==n.return||n.return()}finally{if(s)throw a}}return o}}function _arrayWithHoles(e){if(Array.isArray(e))return e}function _toConsumableArray(e){return _arrayWithoutHoles(e)||_iterableToArray(e)||_unsupportedIterableToArray(e)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(e,t){if(e){if("string"==typeof e)return _arrayLikeToArray(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Map"===(n="Object"===n&&e.constructor?e.constructor.name:n)||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?_arrayLikeToArray(e,t):void 0}}function _iterableToArray(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}function _arrayWithoutHoles(e){if(Array.isArray(e))return _arrayLikeToArray(e)}function _arrayLikeToArray(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
