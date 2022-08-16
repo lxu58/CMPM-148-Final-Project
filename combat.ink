@@ -1,10 +1,15 @@
 //this file contains code for combat and receiving damage
 
+//variables so you can tell what happened during the last fight
+//lost probably won't come up since that will probably mean death?
+LIST combatResults = won, lost, fled, no_combat_yet
+VAR lastCombatResult = no_combat_yet
 
 //i dont think this makes much sense as a storylet, but idk
 == combat(enemyName, enemyHealth, enemyDamage, ->ret)
 {enemyHealth <= 0:
-You see that {enemyName} has fallen to the ground, dead.
+    ~ lastCombatResult = won
+    You see that {enemyName} has fallen to the ground, dead.
 ->ret
 }
 
@@ -27,6 +32,7 @@ They attack, dealing {enemyDamage} damage!
     ~ enemyHealth -= 3
     ->combat(enemyName, enemyHealth, enemyDamage, ret)
 +[Flee.]
+    ~ lastCombatResult = fled
     You run away as fast as you can.
     ->ret
 

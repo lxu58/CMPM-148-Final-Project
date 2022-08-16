@@ -7,7 +7,7 @@ LIST metaLocationProps = anywhere
 //this knot tests to see if a storylet should be available
 //it is called from a storylet descrioption
 
-== function StoryletPropTest(propList, storylet_body_count, storylet_start, storylet_end, storylet_cooldown, time_since_played)
+== function StoryletPropTest(propList, storylet_body_count, storylet_start, storylet_end, storylet_cooldown, time_since_played, hourly_enabled)
 //get all the variables upfront
 ~ temp never_visited = not storylet_body_count //body has never been visited
 ~ temp replayable = propList ? repeatable
@@ -18,7 +18,7 @@ LIST metaLocationProps = anywhere
 
 ~ temp playable = never_visited || replayable
 
-~ return playable && cooldown_passed && correct_location && correct_time_of_day
+~ return playable && cooldown_passed && correct_location && correct_time_of_day && hourly_enabled
 
 //put threads to storylet descriptions here
 == storylets(->ret)
@@ -26,13 +26,15 @@ LIST metaLocationProps = anywhere
 <- rest_storylet_description(ret)
 <- status_storylet_description(ret)
 <- scavenge_storylet_description(ret)
+<- simple_chance_storylet_description(ret)
 ->DONE
 
-== storyletsPassTime
--> wait_storylet_time ->
--> rest_storylet_time ->
--> status_storylet_time ->
--> scavenge_storylet_time ->
+== storyletsPassTime(hours)
+-> wait_storylet_time(hours) ->
+-> rest_storylet_time(hours) ->
+-> status_storylet_time(hours) ->
+-> simple_chance_storylet_time(hours) ->
+-> scavenge_storylet_time(hours) ->
 ->->
 
 // ---------- STORYLETS ----------
@@ -45,12 +47,12 @@ VAR waitStoryletEnd = 24
 VAR waitStoryletCooldown = 0
 VAR waitStoryletTimeSincePlayed = 25
 
-== wait_storylet_time
-~ waitStoryletTimeSincePlayed += 1
+== wait_storylet_time(hours)
+~ waitStoryletTimeSincePlayed += hours
 ->->
 
 == wait_storylet_description(->ret)
-{ StoryletPropTest(waitStoryletProps, wait_storylet_body, waitStoryletStart, waitStoryletEnd, waitStoryletCooldown, waitStoryletTimeSincePlayed):
+{ StoryletPropTest(waitStoryletProps, wait_storylet_body, waitStoryletStart, waitStoryletEnd, waitStoryletCooldown, waitStoryletTimeSincePlayed, true):
 	+ [Wait.]
 		-> wait_storylet_body ->
 		~ waitStoryletTimeSincePlayed = 0
@@ -71,7 +73,7 @@ How long will you wait?
     ~ timeToWait = 12
 +[Wait 24 hours.]
     ~ timeToWait = 24
-- ~ passTime(timeToWait)
+- -> passTime(timeToWait) ->
 ->->
 
 //props, and range of time it is available, time until it can be repeated, time storylet was last played
@@ -81,12 +83,12 @@ VAR restStoryletEnd = 24
 VAR restStoryletCooldown = 0
 VAR restStoryletTimeSincePlayed = 25
 
-== rest_storylet_time
-~ restStoryletTimeSincePlayed += 1
+== rest_storylet_time(hours)
+~ restStoryletTimeSincePlayed += hours
 ->->
 
 == rest_storylet_description(->ret)
-{ StoryletPropTest(restStoryletProps, rest_storylet_body, restStoryletStart, restStoryletEnd, restStoryletCooldown, restStoryletTimeSincePlayed):
+{ StoryletPropTest(restStoryletProps, rest_storylet_body, restStoryletStart, restStoryletEnd, restStoryletCooldown, restStoryletTimeSincePlayed, true):
 	+ [Rest.]
 		-> rest_storylet_body ->
 		~ restStoryletTimeSincePlayed = 0
@@ -99,7 +101,7 @@ You lie down and get some rest.
 ~ temp amountHealed = PLAYER_HEALTH_MAX - playerHealth
 You heal {amountHealed} health, and {amountHealed} hours have passed.
 ~ playerHealth += amountHealed
-~ passTime(amountHealed)
+-> passTime(amountHealed) ->
 - ->->
 
 //props, and range of time it is available, time until it can be repeated, time storylet was last played
@@ -109,12 +111,12 @@ VAR statusStoryletEnd = 24
 VAR statusStoryletCooldown = 0
 VAR statusStoryletTimeSincePlayed = 25
 
-== status_storylet_time
-~ statusStoryletTimeSincePlayed += 1
+== status_storylet_time(hours)
+~ statusStoryletTimeSincePlayed += hours
 ->->
 
 == status_storylet_description(->ret)
-{ StoryletPropTest(statusStoryletProps, status_storylet_body, statusStoryletStart, statusStoryletEnd, statusStoryletCooldown, statusStoryletTimeSincePlayed):
+{ StoryletPropTest(statusStoryletProps, status_storylet_body, statusStoryletStart, statusStoryletEnd, statusStoryletCooldown, statusStoryletTimeSincePlayed, true):
 	+ [Check your status.]
 		-> status_storylet_body ->
 		~ statusStoryletTimeSincePlayed = 0
@@ -138,12 +140,12 @@ VAR scavengeStoryletEnd = 20
 VAR scavengeStoryletCooldown = 0
 VAR scavengeStoryletTimeSincePlayed = 24
 
-== scavenge_storylet_time
-~ scavengeStoryletTimeSincePlayed += 1
+== scavenge_storylet_time(hours)
+~ scavengeStoryletTimeSincePlayed += hours
 ->->
 
 == scavenge_storylet_description(->ret)
-{ StoryletPropTest(scavengeStoryletProps, scavenge_storylet_body, scavengeStoryletStart, scavengeStoryletEnd, scavengeStoryletCooldown, scavengeStoryletTimeSincePlayed):
+{ StoryletPropTest(scavengeStoryletProps, scavenge_storylet_body, scavengeStoryletStart, scavengeStoryletEnd, scavengeStoryletCooldown, scavengeStoryletTimeSincePlayed, true):
 	+ [Scavenge for supplies.]
 		-> scavenge_storylet_body ->
 		~ scavengeStoryletTimeSincePlayed = 0
@@ -162,5 +164,39 @@ You comb the area for supplies...
     	    -> combat("zombie", 5, 1, ->day_loop)
     }
 
-~ passTime(1)
+-> passTime(1) ->
+- ->->
+
+
+// MIX-INS, not "true" storylets, not unthreaded
+
+//props, and range of time it is available, time until it can be repeated, time storylet was last played
+VAR simpleChanceStoryletProps = (repeatable, anywhere)
+VAR simpleChanceStoryletStart = 0
+VAR simpleChanceStoryletEnd = 24
+VAR simpleChanceStoryletCooldown = 0
+VAR simpleChanceStoryletTimeSincePlayed = 25
+VAR simpleChanceStoryletHourlyChance = 25
+VAR simpleChanceStoryletHourlyEnabled = true
+
+== simple_chance_storylet_time(hours)
+~ simpleChanceStoryletTimeSincePlayed += hours
+{RANDOM(1,100) <= simpleChanceStoryletHourlyChance:
+    ~simpleChanceStoryletHourlyEnabled = true
+- else:
+   ~ simpleChanceStoryletHourlyEnabled = false
+}
+->->
+
+== simple_chance_storylet_description(->ret)
+{ StoryletPropTest(simpleChanceStoryletProps, simple_chance_storylet_body, simpleChanceStoryletStart, simpleChanceStoryletEnd, simpleChanceStoryletCooldown, simpleChanceStoryletTimeSincePlayed, simpleChanceStoryletHourlyEnabled):
+	* [There is a 25% chance of this showing up.]
+		-> simple_chance_storylet_body ->
+		~ simpleChanceStoryletTimeSincePlayed = 0
+	-> ret
+}
+-> DONE
+
+== simple_chance_storylet_body
+25% sample text
 - ->->

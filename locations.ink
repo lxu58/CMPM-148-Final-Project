@@ -26,9 +26,10 @@ VAR connectedToLocation2 = (home)
 }
 
 //adds an hour onto the time and changes the location
-== function travel(location)
-~ passTime(1)
+== travel(location)
+-> passTime(1) ->
 ~ currentLocation = location
+->->
 
 // here you can put a description of the current location
 == function describeCurrentLocation()
@@ -44,11 +45,11 @@ VAR connectedToLocation2 = (home)
 == travel_actions(->ret)
 + {canTravel(home)} [Go home.]
 	you go home
-	~ travel(home)
+	-> travel(home) ->
 + {canTravel(location1)} [Go to location1.]
 	you go to location 1
-	~ travel(location1)
+	-> travel(location1) ->
 + {canTravel(location2)} [Go to location2.]
 	you go to location 2
-    ~ travel(location2)
+    -> travel(location2) ->
 - ->ret

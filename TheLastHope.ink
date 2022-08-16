@@ -50,13 +50,18 @@ It is night time.
 ~ timeOfDay = night
 }
 
-=== function passTime(hours)
+=== passTime(hours)
+{hours > 0:
 ~ temp totalHours = time_currentTime + hours
 ~ temp numDays = FLOOR(totalHours / 24)
 ~ temp numHours = totalHours % 24
 
 ~ time_daysGone += numDays
 ~ time_currentTime = numHours
+
+-> storyletsPassTime(hours) ->
+}
+->->
 
 == intro
 pee pee poo poo this is the intro
@@ -65,7 +70,6 @@ pee pee poo poo this is the intro
 ->END
 
 == day_loop
--> storyletsPassTime ->
 ~ checkTime()
 
 <-storylets(->day_loop) //display choices for active storylets, pass divert param to return to loop
