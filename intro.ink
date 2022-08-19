@@ -241,7 +241,7 @@ Gray notices something, and he is looking at you. You know you should pick your 
         ->END
 
 == intro_base
-\-- Chapter 1: Gray's Point of View -- //I know that the text implies the switch, but i thinks it's best to be consistent with the beginning text
+\-- Gray's Point of View -- //I know that the text implies the switch, but i thinks it's best to be consistent with the beginning text
 You stand on a little hill not far away from the base. You look at the people you and Roger met today, and make a very weird smile.
 A leaf floating in air and finally, hit the ground. You lift your glasses and open up the notebook.
 "
@@ -254,4 +254,4 @@ by G
 "
 You put down your notebook and roll up your sleeves again. You look at the picture in your watch. They are smiling like always, your wife and daughter. You wipe away the tears coming from your eyes, and walk back to the campfire.
     *[The Next Day]
-        ->END
+        ->defensive_1

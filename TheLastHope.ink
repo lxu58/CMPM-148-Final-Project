@@ -4,6 +4,8 @@ INCLUDE storylets.ink
 INCLUDE playerInventory.ink
 INCLUDE community.ink
 INCLUDE intro.ink
+INCLUDE defensive_1.ink
+
 
 
 
