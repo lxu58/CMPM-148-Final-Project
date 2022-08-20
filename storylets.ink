@@ -9,7 +9,7 @@ LIST metaLocationProps = anywhere
 //this knot tests to see if a storylet should be available
 //it is called from a storylet descrioption
 
-== function StoryletPropTest(propList, storylet_body_count, storylet_start, storylet_end, storylet_cooldown, time_since_played, hourly_enabled)
+== function StoryletPropTest(propList, storylet_body_count, storylet_start, storylet_end, storylet_cooldown, time_since_played, other_condition)
 //get all the variables upfront
 ~ temp never_visited = not storylet_body_count //body has never been visited
 ~ temp replayable = propList ? repeatable
@@ -21,14 +21,17 @@ LIST metaLocationProps = anywhere
 ~ temp playable = never_visited || replayable
 
 //see if this story should be available
-~return playable && cooldown_passed && correct_location && correct_time_of_day && hourly_enabled && storylets_enabled
+~return playable && cooldown_passed && correct_location && correct_time_of_day && other_condition && storylets_enabled
 
 
 
 //put threads to storylet descriptions here
 == storylets(->ret)
 //storylets that can disable other storylets MUST go above the ones they disable
-<-defensive_night_1_description(ret)
+<- defensive_night_1_description(ret)
+<- defensive_day_2_description(ret)
+<- defensive_night_2_description(ret)
+<- defensive_night_3_description(ret)
 
 <- wait_storylet_description(ret)
 <- rest_storylet_description(ret)
