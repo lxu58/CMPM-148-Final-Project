@@ -1,8 +1,10 @@
 //this file contains storylets and the code for them
+VAR storylets_enabled = true
 
 //below are possible storylet properties
 LIST replayableProps = repeatable, oneShot
 LIST metaLocationProps = anywhere
+//storylets disabling other storylets occurs INSIDE description
 
 //this knot tests to see if a storylet should be available
 //it is called from a storylet descrioption
@@ -18,15 +20,22 @@ LIST metaLocationProps = anywhere
 
 ~ temp playable = never_visited || replayable
 
-~ return playable && cooldown_passed && correct_location && correct_time_of_day && hourly_enabled
+//see if this story should be available
+~return playable && cooldown_passed && correct_location && correct_time_of_day && hourly_enabled && storylets_enabled
+
+
 
 //put threads to storylet descriptions here
 == storylets(->ret)
+//storylets that can disable other storylets MUST go above the ones they disable
+<-defensive_night_1_description(ret)
+
 <- wait_storylet_description(ret)
 <- rest_storylet_description(ret)
 <- status_storylet_description(ret)
 <- scavenge_storylet_description(ret)
 <- simple_chance_storylet_description(ret)
+~ storylets_enabled = true //re-enable storylets
 ->DONE
 
 == storyletsPassTime(hours)
@@ -158,7 +167,7 @@ You comb the area for supplies...
     { shuffle:
     	- 	but find nothing.
     	- 	and find some ammo. (Ammo +2)
-    	    ~ scoreboard_Ammo +=2
+    	    ~ scoreboard_ammo +=2
     	- 	but you are attacked by a zombie!
     	    //-> damagePlayer(1) ->
     	    -> combat("zombie", 5, 1, 10, ->day_loop)

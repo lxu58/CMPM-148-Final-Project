@@ -1,5 +1,5 @@
 //inventory variables here
-VAR scoreboard_Ammo = 2
+VAR scoreboard_ammo = 2
     VAR ammo_get_10 = 10
     VAR ammo_use_1 = -1
     VAR ammo_use_10 = -10
@@ -31,7 +31,7 @@ Your Inventory:
 {bagsOfFood > 0: Bags of Food: {bagsOfFood}}
 {militaryMREs > 0: Military MREs: {militaryMREs}}
 
-{scoreboard_Ammo > 0: Ammo: {scoreboard_Ammo}}
+{scoreboard_ammo > 0: Ammo: {scoreboard_ammo}}
 {handguns > 0: Handguns: {handguns}}
 {boltActionRifles > 0: Bolt Action Rifles: {boltActionRifles}}
 {AR15s > 0: AR-15s: {AR15s}}

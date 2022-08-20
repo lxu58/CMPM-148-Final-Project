@@ -254,4 +254,4 @@ by G
 "
 You put down your notebook and roll up your sleeves again. You look at the picture in your watch. They are smiling like always, your wife and daughter. You wipe away the tears coming from your eyes, and walk back to the campfire.
     *[The Next Day]
-        ->defensive_1
+        ->defensive_intro

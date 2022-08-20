@@ -18,7 +18,7 @@ VAR playerDodgeChance = 10
 :::::::::::::::::::::::::::::::::::::::
 Health: {playerHealth}
 Enemy Health: {enemyHealth}
-Ammo: {scoreboard_Ammo}
+Ammo: {scoreboard_ammo}
 :::::::::::::::::::::::::::::::::::::::
 
 You are fighting {enemyName}.
@@ -37,7 +37,7 @@ You are fighting {enemyName}.
         You miss your punch!
     }
     ->combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
-+{scoreboard_Ammo > 0} [Shoot {enemyName} (Costs 1 Ammo).]
++{scoreboard_ammo > 0} [Shoot {enemyName} (Costs 1 Ammo).]
     {RANDOM(1,100) > enemyDodgeChance:
         You shoot {enemyName}, dealing 3 damage.
         ~ enemyHealth -= 3

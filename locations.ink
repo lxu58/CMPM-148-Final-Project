@@ -1,6 +1,5 @@
 //this file contains code for locations
 
-
 VAR travelBlocked = false //might be useful
 
 LIST allLocations = home, location1, location2
