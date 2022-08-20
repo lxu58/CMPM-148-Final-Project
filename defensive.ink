@@ -41,6 +41,7 @@ VAR defensiveNight1StoryletTimeSincePlayed = 25
 { (!defensive_night_1 && time_daysGone > 0) || (time_daysGone == 0 && StoryletPropTest(defensiveNight1StoryletProps, defensive_night_1, defensiveNight1StoryletStart, defensiveNight1StoryletEnd, defensiveNight1StoryletCooldown, defensiveNight1StoryletTimeSincePlayed, true)):
 
     ~storylets_enabled = false //disable other storylets (below)
+    ~travelBlocked = true
 	+ [Return to M.]
 		-> defensive_night_1 ->
 	-> ret
@@ -75,6 +76,7 @@ VAR defensiveDay2StoryletTimeSincePlayed = 25
 { (defensive_night_1 && !defensive_day_2 && time_daysGone > 1) || (time_daysGone == 1 && StoryletPropTest(defensiveDay2StoryletProps, defensive_day_2, defensiveDay2StoryletStart, defensiveDay2StoryletEnd, defensiveDay2StoryletCooldown, defensiveDay2StoryletTimeSincePlayed, true)):
 
     ~storylets_enabled = false //disable other storylets (below)
+    ~travelBlocked = true
 	+ [Head back and get some sleep.]
 		-> defensive_day_2 ->
 	-> ret
@@ -111,6 +113,7 @@ VAR defensiveNight2StoryletTimeSincePlayed = 25
 { (defensive_day_2 && !defensive_night_2 && time_daysGone > 1) || (time_daysGone == 1 && StoryletPropTest(defensiveNight2StoryletProps, defensive_night_2, defensiveNight2StoryletStart, defensiveNight2StoryletEnd, defensiveNight2StoryletCooldown, defensiveNight2StoryletTimeSincePlayed, true)):
 
     ~storylets_enabled = false //disable other storylets (below)
+    ~travelBlocked = true
 	+ [Go back to base with M.]
 		-> defensive_night_2 ->
 	-> ret
@@ -144,6 +147,7 @@ VAR defensiveNight3StoryletTimeSincePlayed = 25
 { (defensive_night_2 && !defensive_night_3 && time_daysGone > 2) || (time_daysGone == 2 && StoryletPropTest(defensiveNight3StoryletProps, defensive_night_3, defensiveNight3StoryletStart, defensiveNight3StoryletEnd, defensiveNight3StoryletCooldown, defensiveNight3StoryletTimeSincePlayed, true)):
 
     ~storylets_enabled = false //disable other storylets (below)
+    ~travelBlocked = true
 	+ [Go back to the base with your materials.]
 		-> defensive_night_3 ->
 	-> ret
@@ -180,6 +184,7 @@ VAR defensiveDay4StoryletTimeSincePlayed = 25
 { (defensive_night_3 && !defensive_day_4 && time_daysGone > 3) || (time_daysGone == 3 && StoryletPropTest(defensiveDay4StoryletProps, defensive_day_4, defensiveDay4StoryletStart, defensiveDay4StoryletEnd, defensiveDay4StoryletCooldown, defensiveDay4StoryletTimeSincePlayed, true)):
 
     ~storylets_enabled = false //disable other storylets (below)
+    ~travelBlocked = true
 	+ [It's the day of the final battle...]
 		-> defensive_day_4 ->
 	-> ret

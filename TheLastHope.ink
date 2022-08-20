@@ -7,7 +7,7 @@ INCLUDE intro.ink
 INCLUDE date_and_time.ink
 INCLUDE defensive.ink
 
-VAR UI = false
+VAR UI = true
 
 VAR scoreboard_zombiesEncountered = 0
 VAR scoreboard_zombiesKilled = 0
@@ -39,13 +39,14 @@ pee pee poo poo this is the title
 ->END
 
 == day_loop
-~ checkTime()
+//~ checkTime()
 //{time_currentTime}
--> ui_display ->
+-> ui_display -> //only displays in loops anyway
+~ describeCurrentLocation()
 
 <-storylets(->day_loop) //display choices for active storylets, pass divert param to return to loop
-~ describeCurrentLocation()
 <-travel_actions(->day_loop) //display navigation actions
+~travelBlocked = false //unblock travel after 1 loop
 ->DONE
 
 == ui_display
