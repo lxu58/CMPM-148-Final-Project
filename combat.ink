@@ -6,6 +6,7 @@ LIST combatResults = won, lost, fled, no_combat_yet
 VAR lastCombatResult = no_combat_yet
 
 VAR playerDodgeChance = 10
+VAR playerFleeChance = 50
 
 VAR zombies_enabled = true
 
@@ -42,14 +43,21 @@ You are fighting {enemyName}.
 +{scoreboard_ammo > 0} [Shoot {enemyName} (Costs 1 Ammo).]
     {RANDOM(1,100) > enemyDodgeChance:
         You shoot {enemyName}, dealing 3 damage.
+        ~ scoreboard_ammo -= 1
         ~ enemyHealth -= 3
     - else:
+        ~ scoreboard_ammo -= 1
         You miss your shot!
     }
     -> combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
 +[Flee.]
-    ~ lastCombatResult = fled
-    You run away as fast as you can.
+    {RANDOM(1, 100) < playerFleeChance:
+        ~ lastCombatResult = fled
+        You run away as fast as you can.
+    -else:
+        You tried to flee, but you couldn't get away!
+        -> combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
+    }
     ->ret
 
 //note that this is a knot, not a function, so it can divert to dead
@@ -59,18 +67,19 @@ You are fighting {enemyName}.
 ->->
 
 == dead
-You are dead!
+As you lie bleeding on the ground, you dimly wonder what will become of the other survivors. You close your eyes one last time, and blackness overtakes you.
+You are dead.
 ->END
 
 == chance_encounter(percent_chance, ->ret)
 //dont have a zombie encounter if zombies are disabled
 {zombies_enabled == false:->ret}
 {storylets_enabled == false: ->ret}
-pee
 
 ~temp random_number = RANDOM(1, 100)
 {random_number}
 {random_number <= percent_chance:
+    A zombie shambles toward you!
     -> combat("Zombie", 5, 1, 10, ret)
 -else:
     ->->

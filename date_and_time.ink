@@ -39,7 +39,7 @@ It is night time.
 
 //this will happen after any travel, including the 4 main locations
 //still, i think it's better than putting encounter chance in every storylet
--> chance_encounter(25, ->passTime.passTimeEnd)
+-> chance_encounter(10, ->passTime.passTimeEnd)
 }
 = passTimeEnd
 ->->

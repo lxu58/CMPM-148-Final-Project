@@ -16,14 +16,6 @@ VAR scoreboard_zombiesKilled = 0
     VAR zombie_wave = 30
 
 VAR scoreboard_NPCsEncountered = 0
-    
-VAR scoreboard_essentials = 50
-    VAR essentials_get_few = 5
-    VAR essentials_get_fine = 10
-    VAR essentials_get_alot = 40
-    VAR essentials_cost_daily = -10
-    VAR essentials_cost_action = -5
-    VAR essentials_cost_mission = -50
 
 //player status variables here?
 VAR PLAYER_HEALTH_MAX = 10
@@ -32,8 +24,8 @@ VAR playerHealth = 10
 ->title
 
 == title
-pee pee poo poo this is the title
-* [start the game.]
+The Last Hope
+* [Begin Game]
 //    -> intro
     ->day_loop
 ->END
@@ -42,6 +34,7 @@ pee pee poo poo this is the title
 //~ checkTime()
 //{time_currentTime}
 -> ui_display -> //only displays in loops anyway
+{currentLocation}
 ~ describeCurrentLocation()
 
 <-storylets(->day_loop) //display choices for active storylets, pass divert param to return to loop
@@ -54,7 +47,7 @@ pee pee poo poo this is the title
     ~ temp current_day = start_day + time_daysGone
     Date: {start_month}/{current_day}/{start_year}
     Time: {time_currentTime}:00
-    Essentials: {scoreboard_essentials}
+    //Essentials: {scoreboard_essentials}
     Ammo: {scoreboard_ammo}
 }
 ->->

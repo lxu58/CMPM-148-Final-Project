@@ -106,7 +106,7 @@ VAR connectedToHome = (military_base, train_station, residential_district, shopp
 + {canTravel(train_station)} [Go to the train station.]
 	trai
 	-> travel(train_station) ->
-+ {canTravel(residential_district)} [Go to tghe residential district.]
++ {canTravel(residential_district)} [Go to the residential district.]
 	reside
 	-> travel(residential_district) ->
 + {canTravel(shopping_mall)} [Go to the shopping mall.]
@@ -115,10 +115,10 @@ VAR connectedToHome = (military_base, train_station, residential_district, shopp
 + {canTravel(warehouse)} [Go to the warehouse.]
 	ware
 	-> travel(warehouse) ->
-+ {canTravel(underground)} [Go into the underground tunnels.]
++ {canTravel(underground)} [Go into the upper underground tunnels.]
 	under
 	-> travel(underground) ->
-+ {canTravel(underground_deep)} [Go deeper into the underground tunnels.]
++ {canTravel(underground_deep)} [Go into the lower underground tunnels.]
 	deep
 	-> travel(underground_deep) ->
 + {canTravel(train_station_inside)} [Go inside the train station.]
@@ -135,8 +135,8 @@ VAR connectedToHome = (military_base, train_station, residential_district, shopp
 	-> travel(2_story_house) ->
 + {canTravel(mall_left_wing)} [Go to the left wing.]
 	left wing
-	-> travel(home) ->
+	-> travel(mall_left_wing) ->
 + {canTravel(mall_right_wing)} [Go to the right wing.]
 	right wing
-	-> travel(home) ->
+	-> travel(mall_right_wing) ->
 - ->ret

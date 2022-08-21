@@ -7,16 +7,45 @@ VAR scoreboard_community_score = 0
 VAR community_population_count = 0
 VAR community_population_dead = 0
 
-VAR community_food = 0
-VAR community_water = 0
-VAR community_structural_integrity = 0
-VAR community_firepower = 0
+VAR scoreboard_essentials = 0
+    VAR community_food = 0
+    VAR community_water = 0
+    VAR community_misc_essentials = 0
+    VAR community_structural_integrity = 0
+    VAR community_firepower = 0
+    VAR community_misc = 0
 
-== function convertInventoryToCommunityProgress()
-~ convertInventoryToFood()
-~ convertInventoryToWater()
+== function convertRecalculateCommunityResources()
+~ convertInventoryToCommunityScore()
+~ convertInventoryToFoodWaterEssentials()
+~ recalculateCommunityScore()
+~ recalculateEssentials()
+
+== function convertInventoryToCommunityScore()
 ~ convertInventoryToStructuralIntegrity()
 ~ convertInventoryToFirepower()
+~ convertInventoryToMisc()
+
+~ recalculateCommunityScore()
+
+== function recalculateCommunityScore()
+~ scoreboard_community_score = 0
+~ scoreboard_community_score += community_food
+~ scoreboard_community_score += community_water
+~ scoreboard_community_score += community_structural_integrity
+~ scoreboard_community_score += community_firepower
+~ scoreboard_community_score += community_misc
+
+== function convertInventoryToFoodWaterEssentials()
+~ convertInventoryToFood()
+~ convertInventoryToWater()
+~ convertInventoryToMiscEssentials()
+
+== function recalculateEssentials()
+~ scoreboard_essentials = 0
+~ scoreboard_essentials += community_food
+~ scoreboard_essentials += community_water
+~ scoreboard_essentials += community_misc_essentials
 
 == function convertInventoryToFood()
 ~ community_food += bagsOfFood
@@ -27,32 +56,55 @@ VAR community_firepower = 0
 
 == function convertInventoryToWater()
 ~ community_water += bottlesOfWater
-~ community_water += smallTanksOfWater * 2
 
 ~ bottlesOfWater = 0
-~ smallTanksOfWater = 0
+
+== function convertInventoryToMiscEssentials
+~ community_misc_essentials += fryingPans
+~ community_misc_essentials += firstAidKits * 4 //first aid kits have a use to the player, so i made them worth more
+~ community_misc_essentials += bagsOfClothing
+
+~ firstAidKits = 0
+~ fryingPans = 0
+~ bagsOfClothing = 0
 
 == function convertInventoryToStructuralIntegrity()
 ~ community_structural_integrity += woodPlanks
 ~ community_structural_integrity += bricks * 2
+~ community_structural_integrity += brokenSteelGates * 2
 ~ community_structural_integrity += concrete * 3
 ~ community_structural_integrity += militaryGradeSteel * 4
 
 ~ woodPlanks = 0
 ~ bricks = 0
+~ brokenSteelGates = 0
 ~ concrete = 0
 ~ militaryGradeSteel = 0
 
 == function convertInventoryToFirepower()
 ~ community_firepower += handguns
-~ community_firepower += boltActionRifles
-~ community_firepower += AR15s
+~ community_firepower += boltActionRifles * 2
+~ community_firepower += AR15s * 3
+~ community_firepower += emergencyAxes
+~ community_firepower += securityTasers
+
+~ community_firepower += bulletproofVests * 2
+~ community_firepower += riotShields * 3
 
 ~ handguns = 0
 ~ boltActionRifles = 0
 ~ AR15s = 0
+~ emergencyAxes = 0
+~ securityTasers = 0
 
-== function convertInventoryToCommunityScore()
-~ scoreboard_community_score += bagsOfSeeds
-~ scoreboard_community_score += gasoline
-~ scoreboard_community_score += vehicles
+~ bulletproofVests = 0
+~ riotShields = 0
+
+== function convertInventoryToMisc()
+~ community_misc += bagsOfSeeds
+~ community_misc += gasoline
+~ community_misc += vehicles * 3
+
+~ bagsOfSeeds = 0
+~ gasoline = 0
+~ vehicles = 0

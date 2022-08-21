@@ -54,8 +54,9 @@ VAR defensiveNight1StoryletTimeSincePlayed = 25
 ~time_daysGone = 0
 ~time_currentTime = 23
 //setting date and time like this does not set cooldowns properly
-~scoreboard_essentials = 20
-~scoreboard_ammo = 10
+//~scoreboard_essentials = 20
+//~scoreboard_ammo = 10
+~ convertRecalculateCommunityResources()
 
 ~currentLocation = home
 
@@ -88,10 +89,11 @@ VAR defensiveDay2StoryletTimeSincePlayed = 25
 //variable Residential
 ~time_daysGone = 1 //should this be later??
 ~time_currentTime = 7
-~scoreboard_essentials = 20
-~scoreboard_ammo = 10
+//~scoreboard_essentials = 20
+//~scoreboard_ammo = 10
 
 ~currentLocation = home
+~zombies_enabled = true
 
 "Morning!"
 *[...and listen to what he might say.]
@@ -125,8 +127,9 @@ VAR defensiveNight2StoryletTimeSincePlayed = 25
 == defensive_night_2
 ~time_daysGone = 1
 ~time_currentTime = 23
-~scoreboard_essentials = 20
-~scoreboard_ammo = 10
+//~scoreboard_essentials = 20
+//~scoreboard_ammo = 10
+~ convertRecalculateCommunityResources()
 
 ~currentLocation = home
 
@@ -159,8 +162,9 @@ VAR defensiveNight3StoryletTimeSincePlayed = 25
 == defensive_night_3
 ~time_daysGone = 2
 ~time_currentTime = 23
-~scoreboard_essentials = 20
-~scoreboard_ammo = 10
+//~scoreboard_essentials = 20
+//~scoreboard_ammo = 10
+~ convertRecalculateCommunityResources()
 
 ~currentLocation = home
     You wait for William
@@ -196,8 +200,9 @@ VAR defensiveDay4StoryletTimeSincePlayed = 25
 == defensive_day_4
 ~time_daysGone = 3
 ~time_currentTime = 7
-~scoreboard_essentials = 20
-~scoreboard_ammo = 10
+//~scoreboard_essentials = 20
+//~scoreboard_ammo = 10
+~ convertRecalculateCommunityResources()
 
 It's clear you know nothing
 *[Run away from the base.]
