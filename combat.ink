@@ -7,11 +7,13 @@ VAR lastCombatResult = no_combat_yet
 
 VAR playerDodgeChance = 10
 
+VAR zombies_enabled = true
+
 //i dont think this makes much sense as a storylet, but idk
 == combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ->ret)
 {enemyHealth <= 0:
     ~ lastCombatResult = won
-    You see that {enemyName} has fallen to the ground, dead.
+    {enemyName} has fallen to the ground, dead.
 ->ret
 }
 
@@ -25,7 +27,7 @@ You are fighting {enemyName}.
 {RANDOM(1,100) <= playerDodgeChance:
     You are attacked by {enemyName}, but you are able to dodge.
 - else:
-    They attack, dealing {enemyDamage} damage!
+    {enemyName} attacks, dealing {enemyDamage} damage!
 }
 -> damagePlayer(enemyDamage) ->
 
@@ -36,7 +38,7 @@ You are fighting {enemyName}.
     - else:
         You miss your punch!
     }
-    ->combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
+    -> combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
 +{scoreboard_ammo > 0} [Shoot {enemyName} (Costs 1 Ammo).]
     {RANDOM(1,100) > enemyDodgeChance:
         You shoot {enemyName}, dealing 3 damage.
@@ -44,7 +46,7 @@ You are fighting {enemyName}.
     - else:
         You miss your shot!
     }
-    ->combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
+    -> combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
 +[Flee.]
     ~ lastCombatResult = fled
     You run away as fast as you can.
@@ -59,3 +61,18 @@ You are fighting {enemyName}.
 == dead
 You are dead!
 ->END
+
+== chance_encounter(percent_chance, ->ret)
+//dont have a zombie encounter if zombies are disabled
+{zombies_enabled == false:->ret}
+{storylets_enabled == false: ->ret}
+pee
+
+~temp random_number = RANDOM(1, 100)
+{random_number}
+{random_number <= percent_chance:
+    -> combat("Zombie", 5, 1, 10, ret)
+-else:
+    ->->
+}
+->->

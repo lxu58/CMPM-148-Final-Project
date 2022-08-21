@@ -62,6 +62,7 @@ VAR defensiveNight1StoryletTimeSincePlayed = 25
 night time,
 *[Time to leave.]
     ->passTime(2)-> //how long should this storylet take?
+    ~zombies_enabled = false
     ->->
 
 VAR defensiveDay2StoryletProps = (anywhere)
@@ -98,6 +99,7 @@ VAR defensiveDay2StoryletTimeSincePlayed = 25
 **[Go ahead and say hello.]
     "Yo, was the solo adventure fun yesterday?"
 ***[Say goodbye to them and prepare to explore with M.]
+    ~zombies_enabled = true
     ->->
 
 

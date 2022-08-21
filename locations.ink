@@ -2,7 +2,7 @@
 
 VAR travelBlocked = false //might be useful
 
-LIST allLocations = home, military_base, train_station, residential_district, shopping_mall, warehouse, underground, underground_deep, train_station_inside, train_station_upstairs, 1_story_house, 2_story_house, mall_left_wing, mall_right_wing, location1, location2
+LIST allLocations = home, military_base, train_station, residential_district, shopping_mall, warehouse, underground, underground_deep, train_station_inside, train_station_upstairs, 1_story_house, 2_story_house, mall_left_wing, mall_right_wing
 VAR currentLocation = home
 
 //here we list where is connected to where, it's basically the map
@@ -20,10 +20,6 @@ VAR connectedToHome = (military_base, train_station, residential_district, shopp
     VAR connectedToShoppingMall = (home, mall_left_wing, mall_right_wing)
         VAR connectedToMallLeftWing = (shopping_mall, mall_right_wing)
         VAR connectedToMallRightWing = (shopping_mall, mall_left_wing)
-        
-
-VAR connectedToLocation1 = (home, location2)
-VAR connectedToLocation2 = (home)
 
 //test if locations are connected to other locations here
 == function canTravel(location)
@@ -143,12 +139,4 @@ VAR connectedToLocation2 = (home)
 + {canTravel(mall_right_wing)} [Go to the right wing.]
 	right wing
 	-> travel(home) ->
-	
-	
-+ {canTravel(location1)} [Go to location1.]
-	you go to location 1
-	-> travel(location1) ->
-+ {canTravel(location2)} [Go to location2.]
-	you go to location 2
-    -> travel(location2) ->
 - ->ret

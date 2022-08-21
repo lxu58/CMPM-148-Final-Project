@@ -146,7 +146,7 @@ VAR statusStoryletTimeSincePlayed = 25
 - ->->
 
 //scavenging option
-VAR scavengeStoryletProps = (repeatable, location1, location2)
+VAR scavengeStoryletProps = (repeatable, warehouse, underground_deep, train_station_inside, 1_story_house, 2_story_house, mall_left_wing, mall_right_wing)
 VAR scavengeStoryletStart = 8
 VAR scavengeStoryletEnd = 20
 VAR scavengeStoryletCooldown = 0
