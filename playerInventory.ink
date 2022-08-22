@@ -1,12 +1,12 @@
 //inventory variables here
-VAR scoreboard_ammo = 2
+VAR scoreboard_ammo = 0
     VAR ammo_get_10 = 10
     VAR ammo_use_1 = -1
     VAR ammo_use_10 = -10
     VAR ammo_use_30 = -30
 
-VAR bottlesOfWater = 3
-VAR bagsOfFood = 3
+VAR bottlesOfWater = 0
+VAR bagsOfFood = 0
 VAR militaryMREs = 0
 
 VAR firstAidKits = 1

@@ -26,15 +26,15 @@ VAR playerHealth = 10
 == title
 The Last Hope
 * [Begin Game]
-//    -> intro
-    ->day_loop
+    -> intro
+    //->day_loop
 ->END
 
 == day_loop
 //~ checkTime()
 //{time_currentTime}
 -> ui_display -> //only displays in loops anyway
-{currentLocation}
+//{currentLocation}
 ~ describeCurrentLocation()
 
 <-storylets(->day_loop) //display choices for active storylets, pass divert param to return to loop

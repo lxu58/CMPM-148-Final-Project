@@ -86,8 +86,9 @@ VAR waitStoryletTimeSincePlayed = 25
 -> DONE
 
 == wait_storylet_body
-How long will you wait?
-~ temp timeToWait = 0
+You wait an hour. //waiting too long messes with stuff a little
+~ temp timeToWait = 1
+/*
 +[Nevermind.]
     ->->
 +[Wait 1 hour.]
@@ -98,6 +99,7 @@ How long will you wait?
     ~ timeToWait = 12
 +[Wait 24 hours.]
     ~ timeToWait = 24
+    */
 - -> passTime(timeToWait) ->
 ->->
 

@@ -90,7 +90,7 @@ You are devoured whole.
 {storylets_enabled == false: ->ret}
 
 ~temp random_number = RANDOM(1, 100)
-{random_number}
+//{random_number}
 {random_number <= percent_chance:
     A zombie shambles toward you!
     -> combat("Zombie", 5, 1, 10, ret)

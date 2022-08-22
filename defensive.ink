@@ -6,7 +6,7 @@ VAR flag_Gray_Route = false
 ~scoreboard_essentials = 20
 ~scoreboard_ammo = 10
 //UI = true //pointless
-\--Chapter 3: Defensive: Infesting Heart --
+\-- Chapter 3: Defensive: Infesting Heart --
 
 Next Day.
 
@@ -451,7 +451,45 @@ Finally, you choose to go to the frontline and help your comrade.
     ->END
 
 == defensive_1_good_end
-    good end
+\-- Chapter 5: Know About My Friends -- //sudden 1st person? why?
+I got up 
+
+*[Walk about the base to see if everyone is okay.]
+That's William's daughter
+
+**[Head to the storage room.]
+There are still
+
+***[An alarm?]
+"This is way early
+
+****["Let me go with you!"]
+"You?"
+
+*****\-- Gray's Point of View --
+(It's been three days
+
+******[Look at J.]
+J looks extremely
+
+*******[Run back to base and ring the alarm.]
+\-- Roger's Point of View --
+You run to the front
+
+********[Keep running and give a glance at the pistol he handed to you.]
+The pistol has no ammo
+
+*********[It's time for the counterattack.]
+Night time, zombies'
+
+**********[Read the letter.]
+"
+Date: 7/6
+Target: Cleared
+
+\-- Normal End: Counterattack -- //i just wanna name the endings, okay??!!
+->END
+
 ->END
 
 == defensive_resources_update_check()

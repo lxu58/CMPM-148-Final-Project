@@ -27,6 +27,8 @@ It is night time.
 }
 
 == passTime(hours)
+-> passTimeStart(hours)
+= passTimeStart(hours)
 {hours > 0:
 ~ temp totalHours = time_currentTime + hours
 ~ temp numDays = FLOOR(totalHours / 24)
@@ -34,12 +36,12 @@ It is night time.
 
 ~ time_daysGone += numDays
 ~ time_currentTime = numHours
-
 -> storyletsPassTime(hours) ->
 
 //this will happen after any travel, including the 4 main locations
 //still, i think it's better than putting encounter chance in every storylet
 -> chance_encounter(10, ->passTime.passTimeEnd)
 }
+-> passTimeEnd
 = passTimeEnd
 ->->
