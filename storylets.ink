@@ -245,7 +245,7 @@ VAR militaryScavengeStoryletTimeSincePlayed = 24
 
 == military_scavenge_storylet_description(->ret)
 { StoryletPropTest(militaryScavengeStoryletProps, military_scavenge_storylet_body, militaryScavengeStoryletStart, militaryScavengeStoryletEnd, militaryScavengeStoryletCooldown, militaryScavengeStoryletTimeSincePlayed, true):
-	+ [Search the warehouse for supplies.]
+	+ [Look through the containers.]
 		-> military_scavenge_storylet_body ->
 		~ militaryScavengeStoryletTimeSincePlayed = 0
 	-> ret
@@ -308,7 +308,7 @@ VAR militaryUndergroundScavengeStoryletTimeSincePlayed = 24
 
 == military_underground_scavenge_storylet_description(->ret)
 { StoryletPropTest(militaryUndergroundScavengeStoryletProps, military_underground_scavenge_storylet_body, militaryUndergroundScavengeStoryletStart, militaryUndergroundScavengeStoryletEnd, militaryUndergroundScavengeStoryletCooldown, militaryUndergroundScavengeStoryletTimeSincePlayed, true):
-	+ [Search the tunnels for supplies.]
+	+ [Search the boxes.]
 		-> military_underground_scavenge_storylet_body ->
 		~ militaryUndergroundScavengeStoryletTimeSincePlayed = 0
 	-> ret
@@ -316,7 +316,7 @@ VAR militaryUndergroundScavengeStoryletTimeSincePlayed = 24
 -> DONE
 
 == military_underground_scavenge_storylet_body
-You carefully search for any remaining items, and find:
+You find:
 ~ temp chance_90 = RANDOM(1, 100) <= 90
 ~ temp chance_60 = RANDOM(1, 100) <= 60
 ~ temp chance_30 = RANDOM(1, 100) <= 30

@@ -4,8 +4,8 @@ VAR scoreboard_community_score = 0
     VAR community_task_20 = 20
     VAR community_task_50 = 50
 
-VAR community_population_count = 0
-VAR community_population_dead = 0
+//VAR community_population_count = 0
+//VAR community_population_dead = 0
 
 VAR scoreboard_essentials = 0
     VAR community_food = 0
@@ -15,11 +15,15 @@ VAR scoreboard_essentials = 0
     VAR community_firepower = 0
     VAR community_misc = 0
 
+VAR COMMUNITY_DAILY_ESSENTIALS_CONSUMPTION = 20
+
 == function convertRecalculateCommunityResources()
 ~ convertInventoryToCommunityScore()
 ~ convertInventoryToFoodWaterEssentials()
+
+~ convertFoodWaterMiscToEssentials()
+
 ~ recalculateCommunityScore()
-~ recalculateEssentials()
 
 == function convertInventoryToCommunityScore()
 ~ convertInventoryToStructuralIntegrity()
@@ -30,8 +34,6 @@ VAR scoreboard_essentials = 0
 
 == function recalculateCommunityScore()
 ~ scoreboard_community_score = 0
-~ scoreboard_community_score += community_food
-~ scoreboard_community_score += community_water
 ~ scoreboard_community_score += community_structural_integrity
 ~ scoreboard_community_score += community_firepower
 ~ scoreboard_community_score += community_misc
@@ -41,11 +43,15 @@ VAR scoreboard_essentials = 0
 ~ convertInventoryToWater()
 ~ convertInventoryToMiscEssentials()
 
-== function recalculateEssentials()
+== function convertFoodWaterMiscToEssentials()
 ~ scoreboard_essentials = 0
 ~ scoreboard_essentials += community_food
 ~ scoreboard_essentials += community_water
 ~ scoreboard_essentials += community_misc_essentials
+
+~ community_food = 0
+~ community_water = 0
+~ community_misc_essentials = 0
 
 == function convertInventoryToFood()
 ~ community_food += bagsOfFood

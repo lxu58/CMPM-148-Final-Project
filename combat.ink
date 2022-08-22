@@ -14,7 +14,7 @@ VAR zombies_enabled = true
 == combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ->ret)
 {enemyHealth <= 0:
     ~ lastCombatResult = won
-    {enemyName} has fallen to the ground, dead.
+    You survived, for now.
 ->ret
 }
 
@@ -24,27 +24,38 @@ Enemy Health: {enemyHealth}
 Ammo: {scoreboard_ammo}
 :::::::::::::::::::::::::::::::::::::::
 
-You are fighting {enemyName}.
+You are fighting a zombie.
 {RANDOM(1,100) <= playerDodgeChance:
-    You are attacked by {enemyName}, but you are able to dodge.
+    You are attacked by the zombie, but you are able to dodge.
 - else:
-    {enemyName} attacks, dealing {enemyDamage} damage!
+    the zombie attacks, dealing {enemyDamage} damage!
 }
 -> damagePlayer(enemyDamage) ->
 
-+[Punch {enemyName}.]
++[Swing at the zombie.]
+    The zombie quickly approaches and lunges at you while you swing your weapon at them.
     {RANDOM(1,100) > enemyDodgeChance:
-        You swing your fists at the enemy, dealing 1 damage.
+        Your hit connects with a thud, dealing 1 damage.
         ~ enemyHealth -= 1
+        {enemyHealth <= 0:
+            You barely dodge the zombie's attack and swing back at its head with all your strength.
+            A crushing sound can be heard from the zombie's head before it flies off the zombie's neck.
+        }
     - else:
-        You miss your punch!
+        Your weapon swings past the zombie, hitting only air.
     }
     -> combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)
-+{scoreboard_ammo > 0} [Shoot {enemyName} (Costs 1 Ammo).]
++{scoreboard_ammo > 0} [Shoot the zombie (Costs 1 Ammo).]
+    Luckily there is still ammo in your gun and you quickly aim at the zombie who is approaching dangerously close.
+    Bang!
     {RANDOM(1,100) > enemyDodgeChance:
-        You shoot {enemyName}, dealing 3 damage.
+        Your shot connects, dealing 3 damage to the zombie.
         ~ scoreboard_ammo -= 1
         ~ enemyHealth -= 3
+        
+        {enemyHealth <= 0:
+            After a few shots, including a critical hit to the head, the creature finally stops, but you can still see its body twitching.
+        }
     - else:
         ~ scoreboard_ammo -= 1
         You miss your shot!
@@ -67,8 +78,10 @@ You are fighting {enemyName}.
 ->->
 
 == dead
-As you lie bleeding on the ground, you dimly wonder what will become of the other survivors. You close your eyes one last time, and blackness overtakes you.
-You are dead.
+You try desperately to fight off the zombie, however it does not seem to care about its wounds and continues to lunge at you.
+Before you can take another move, you are pinned down to the ground and the last thing you see is the zombie's enormous mouth in front of your face.
+As you approach death, you dimly wonder what will become of the other survivors. You close your eyes one last time, and blackness overtakes you.
+You are devoured whole.
 ->END
 
 == chance_encounter(percent_chance, ->ret)
