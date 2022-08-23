@@ -14,6 +14,8 @@ VAR zombies_enabled = true
 == combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ->ret)
 {enemyHealth <= 0:
     ~ lastCombatResult = won
+    ~ scoreboard_zombiesEncountered += 1
+    ~ scoreboard_zombiesKilled += 1
     You survived, for now.
 ->ret
 }
@@ -65,6 +67,7 @@ You are fighting a zombie.
     {RANDOM(1, 100) < playerFleeChance:
         ~ lastCombatResult = fled
         You run away as fast as you can.
+        ~ scoreboard_zombiesEncountered += 1
     -else:
         You tried to flee, but you couldn't get away!
         -> combat(enemyName, enemyHealth, enemyDamage, enemyDodgeChance, ret)

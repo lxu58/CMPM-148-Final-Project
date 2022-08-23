@@ -154,10 +154,13 @@ VAR statusStoryletTimeSincePlayed = 25
 == status_storylet_body
 +[Check health.]
     Health: {playerHealth}
-+[Check how many days have passed.]
-    Days Passed: {time_daysGone}
 +[Check inventory.]
     -> displayInventory ->
++[Check how many days have passed.]
+    Days Passed: {time_daysGone}
++[Check how many zombies you have fought.]
+    Zombies Encountered: {scoreboard_zombiesEncountered}
+    Zombies Killed: {scoreboard_zombiesKilled}
 - ->->
 
 //use a first aid kit

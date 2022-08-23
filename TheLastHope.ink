@@ -11,11 +11,11 @@ VAR UI = true
 
 VAR scoreboard_zombiesEncountered = 0
 VAR scoreboard_zombiesKilled = 0
-    VAR zombie_single = 1
-    VAR zombie_group = 10
-    VAR zombie_wave = 30
+//    VAR zombie_single = 1
+//    VAR zombie_group = 10
+//    VAR zombie_wave = 30
 
-VAR scoreboard_NPCsEncountered = 0
+//VAR scoreboard_NPCsEncountered = 0
 
 //player status variables here?
 VAR PLAYER_HEALTH_MAX = 10
