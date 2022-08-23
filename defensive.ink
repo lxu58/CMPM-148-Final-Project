@@ -36,12 +36,11 @@ You brush your teeth and make yourself ready for the conversation. Suddenly, you
         ***["Time for some honey!"] //????
             //~UI = true
             ->day_loop
-    ** [Go listen to what they're saying.]
-        this will lead u to find another community
-in progress
-        ~flag_Gray_Route = true
-        ~ UI = false
-        ->END
+//    ** [Go listen to what they're saying.]
+//        this will lead u to find another community in progress
+//        ~flag_Gray_Route = true
+//        ~ UI = false
+//       ->END
 
 
 // ---------- STORYLETS ----------
