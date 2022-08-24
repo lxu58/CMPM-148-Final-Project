@@ -67,7 +67,7 @@ VAR connectedToHome = (military_base, train_station, residential_district, shopp
 == function describeCurrentLocation()
 { currentLocation:
 	-home:
-        You stand in front of your base and start to decide where should you go to seaarch for resources. "The Military Base should contain more firearm related resource, the Train Station should have items that can help reinforce the base, the Residential District could have a little of everything, and the Shopping Mall should have plenty of food related resources." you mumbled to yourself.
+        You stand in front of your base and start to decide where should you go to search for resources. "The Military Base should contain more firearm related resource, the Train Station should have items that can help reinforce the base, the Residential District could have a little of everything, and the Shopping Mall should have plenty of food related resources." you mumbled to yourself.
 	-military_base:
         From the outside, the military base looks like a group of warehouses surrounded by steel wires. You've heard that the base consists of 2 levels, the warehouses you see above the ground and the secret control room underground.
 
@@ -130,7 +130,7 @@ VAR connectedToHome = (military_base, train_station, residential_district, shopp
 + {canTravel(military_base)} [Go to the military base.]
 	You start heading towards the entrance to San Tose, the military base.
 	-> travel(military_base) ->
-+ {canTravel(train_station)} [Go to the train station.]
++ {canTravel(train_station)} [Go to the train station entrance.]
 	You walk toward the train station.
 	-> travel(train_station) ->
 + {canTravel(residential_district)} [Go to the residential district.]
