@@ -28,7 +28,7 @@ You brush your teeth and make yourself ready for the conversation. Suddenly, you
 
     You can sense a tiny piece of regret coming from the deep place of your heart, and it's accompanied with something dark, evil, and full of selfishness.
 
-    "No, it's not the time." You are wispering like a misquote.
+    "No, it's not the time." You are whispering like a misquote.
 
     Few minutes later, you find yourself standing in front of the gate of the base.
 
@@ -121,7 +121,7 @@ VAR defensiveDay2StoryletTimeSincePlayed = 25
 == defensive_day_2
 //variable Residential
 ~time_daysGone = 1 //should this be later??
-~time_currentTime = 7
+~time_currentTime = 10
 //~scoreboard_essentials = 20
 //~scoreboard_ammo = 10
 
@@ -332,7 +332,7 @@ VAR defensiveDay4StoryletTimeSincePlayed = 25
 
 == defensive_day_4
 ~time_daysGone = 3
-~time_currentTime = 7
+~time_currentTime = 10
 //~scoreboard_essentials = 20
 //~scoreboard_ammo = 10
 
@@ -357,13 +357,19 @@ You think about your past, and you choose to...
     ->END
     
 *[...take stock of your materials.]
-    {scoreboard_community_score < 50:
-    -> END
-    }
-    {scoreboard_community_score < 80:
+    *[cheat: normal end]
         ->defensive_1_normal_end
-    }
+    *[cheat: good end]
         ->defensive_1_good_end
+    *[just continue]
+        {scoreboard_community_score < 20:
+            //is this a thing??
+            -> defensive_death
+        }
+        {scoreboard_community_score < 50:
+            ->defensive_1_normal_end
+        }
+           ->defensive_1_good_end
     
 
 == defensive_1_normal_end
@@ -622,9 +628,9 @@ and then just like last time, you put one bullet in that pistol agian, and caref
 ->->
 
 == defensive_death
-You didn't bring enough water, food, and weapon back today. The people from Mr.J's community still enjoys the supplement, you know it's a hard decision, but you really need more people to help gathering the living materials from now on. 
+You didn't bring enough water, food, and weapon back today. The people from Mr. J's community still enjoys the supplement, you know it's a hard decision, but you really need more people to help gathering the living materials from now on. 
 
-Couple days later, more and more people from community died when they were out for exploration, Mr.J is clearly not happy with that. He got crazy and drank all the time since his manager M died from the last exploration. 
+Couple days later, more and more people from community died when they were out for exploration, Mr. J is clearly not happy with that. He got crazy and drank all the time since his manager M died from the last exploration. 
 
 You are losing confidence and planning to leave this place, but you can't find Gray anywhere.
 

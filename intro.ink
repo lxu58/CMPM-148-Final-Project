@@ -152,12 +152,12 @@ Lu's Toe is a Department Mall, we can find food, alcohol, smokes. and more alcoh
 So where do you want to go, BOOOSS?"
 
 "Let's go to the..."
-    ******[Military Base: San Tose]
-        ->END
-    ******[Train Station: Main Drive Station]
-        ->END
-    ******[Residential District: Heaven]
-        ->END
+    //******[Military Base: San Tose]
+    //    ->END
+    //******[Train Station: Main Drive Station]
+    //    ->END
+    //******[Residential District: Heaven]
+    //    ->END
     ******[Shopping Mall: Lu's Toe]
         "Good choice, we do need alcohol to make our lives better. Even though I am not a big fan of it, I am pretty sure someone will like it." Gray rolled up his sleeves, there is a beautiful white pocket watch covered with some dried blood. You don't know if he intentionally wants to keep it dirty or not. The watch itself looks pretty old. Most people put a picture on the back of the watch cover, but what does Gray have? For all you know, he might be keeping a hit list for people who look at him the wrong way.
         Gray carefully hides the watch under his sleeves, adjusts his elegant glasses, and says:
@@ -213,6 +213,8 @@ So where do you want to go, BOOOSS?"
     ->intro_toward_shopping_mall
     
 == intro_shopping_mall
+->start
+= start
 Once you enter Lu's Toe, you immediately hear a loud voice.
 "Welcome, nice doing business with ya!!!" the voice said.
 A couple seconds later, he is walking towards you. It's a giant man with scar across his eyes.
@@ -220,13 +222,16 @@ It's a man with a typical soldier's face. But he is wearing a coat with animated
 Seems like Gray wants to say something, but you speak before he can open his mouth and ruin it.
 "Yes, nice to see you my friend, but is it the first time we've met?"
 "Maybe yes, maybe no. But since you are coming, are you willing to do business with us, this place just got attacked by zombies last night and is not safe at all. You will help us right? You will I guess!" This split man puts one of his hand into his pocket, you know there is something there.
+->choice
+= choice
+
 Gray notices something, and he is looking at you. You know you should pick your next words carefully.
     {got_weapons:
-     *["I've got some weapons and a good place to live. You wanna join me?"]
+     *"I've got some weapons and a good place to live. You wanna join me?"
         **[You package the stuff and head back to your base.]
             ->intro_base
     }
-    *["We can do business. How can I help?"]
+    *"We can do business. How can I help?"
         "There are two people ran away from here last night, and they took most of the weapons and ammo, they might be still in this area, can you find them, and bring their weapon back to us?"
         "Okay, we will do it, can you lead your people and head to our base, so we can save time from meeting up again so we do not waste time meeting up again."
         "Sure, haha, I will let everyone know we're going to have a new base, but it might take a while because we have 50 people, you can grab some food and go search for the weapons."
@@ -237,8 +242,9 @@ Gray notices something, and he is looking at you. You know you should pick your 
             ~ got_weapons = true //may not be useful here
             ***[Head back to the base.]
                 ->intro_base
-    *["My business is in give-and-take. What can you give me?"]
-        ->END
+    *"My business is in give-and-take. What can you give me?"
+        "Nothing." //dead end??
+        ->choice
 
 == intro_base
 \-- Gray's Point of View -- //I know that the text implies the switch, but i thinks it's best to be consistent with the beginning text

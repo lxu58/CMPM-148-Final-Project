@@ -27,7 +27,8 @@ VAR playerHealth = 10
 The Last Hope
 * [Begin Game]
     -> intro
-    //->day_loop
+*[Begin Game (Skip Intro)]
+    ->intro_shopping_mall
 ->END
 
 == day_loop

@@ -78,7 +78,7 @@ VAR waitStoryletTimeSincePlayed = 25
 
 == wait_storylet_description(->ret)
 { StoryletPropTest(waitStoryletProps, wait_storylet_body, waitStoryletStart, waitStoryletEnd, waitStoryletCooldown, waitStoryletTimeSincePlayed, true):
-	+ [Wait.]
+	+ [Wait an hour.]
 		-> wait_storylet_body ->
 		~ waitStoryletTimeSincePlayed = 0
 	-> ret
@@ -116,7 +116,7 @@ VAR restStoryletTimeSincePlayed = 25
 
 == rest_storylet_description(->ret)
 { StoryletPropTest(restStoryletProps, rest_storylet_body, restStoryletStart, restStoryletEnd, restStoryletCooldown, restStoryletTimeSincePlayed, true):
-	+ [Rest.]
+	+ [Rest and heal.]
 		-> rest_storylet_body ->
 		~ restStoryletTimeSincePlayed = 0
 	-> ret
