@@ -450,41 +450,158 @@ Finally, you choose to go to the frontline and help your comrade.
     ->END
 
 == defensive_1_good_end
-\-- Chapter 5: Know About My Friends -- //sudden 1st person? why?
-I got up 
+\-- Chapter 5: Know About My Friends -- //sudden 1st person? why???
+\-- Roger's Thoughts -- 
+
+I got up in the late afternoon today and ate as much as I could. This probably would be my last meal. How ironic ....
+
+I want to live longer; however, there is something inside me that forces me to stay here for a little longer. 
+
+I can feel the soul of the community, and the heart of William, and also the determination from J and Gray. But what can I do to help myself? I am literally a fragile man with a little bit of a super power that can be used to protect myself from the zombies. 
+
+If I want to leave, I can definitely leave and live in this world as long as I want, but what's is the point of helping people. //?
+
 
 *[Walk about the base to see if everyone is okay.]
-That's William's daughter
+That's William's daughter. Why is she there? This place is neither the storage room nor the temporary shelter for tonight's zombie's attack. 
+
+“My honey! This place is dangerous, you gotta get back to the shelter!"
+
+"But my dad said he is going to give me a gift, I have to wait him...."
+
+"I will go find him and tell him you are still waiting for the gift. Can you go back to the base, you leave the rest to be."
+
+"Thanks Roger, you are really good man!"
+
+I am walking to the storage room rapidly because I know that's the place where that big man will be.
 
 **[Head to the storage room.]
-There are still
+There are still lots of steps away from the storage room, but I can clearly see the mountains of supplement stacks in front of the tent.
+
+"Wi ~ lliam, are you here?"
+
+"Roger? I thought you were with people in the shelter, hurry up, get back to the shelter. we don't know when they will start attacking, this place is not a choice for a party..."
+
+"Your daughter is waiting for a gift."
+
+"A gift? Oh, I did find one for her. It's old, but I spent a little bit of time last night, now it looks pretty clean. Can you hand this to her? I can't leave here because we are about..."
 
 ***[An alarm?]
-"This is way early
+"This is way earlier than we thought. What's your plan, William?"
+
+"Bring this to my daughter, and tell her I love her!"
+
+William handed me a Teddy bear; as he said, it's a little bit old, but clean. I know he is this kind of man, but right now, I make up my mind.
+
+There is something I have to do first.
 
 ****["Let me go with you!"]
-"You?"
+"You?" 
+
+He looks at me with a weird expression, and I am waiting to what he wants to reply.
+
+"Okay, grab a weapon, comrade, guess today you will have a bad bargain!"
+
+"Yeah! We are going to show them all we've got, for our friends!"
 
 *****\-- Gray's Point of View --
-(It's been three days
+(It's been three days since I've started working with this crazy man. He is really a monster.)
+
+"Hey, J, I understand scouting is necessary, but why not bring some weapons, what if..."
+
+"Coward, I know you have a pistol, if you're a true man, you can defeat three zombies at the same time with your two arms."
+
+"Three? I don't have a third arm!"
+
+"Then you bite them... wait... sheeeeeeeee" //like shit?
+
+(I notice there are people running toward us. They might be the scouts ahead of us, does that mean...?)
+
+"BOSS!!"
+
+(It's scout! that means...)
+
+"Run, BOSS!! "
 
 ******[Look at J.]
-J looks extremely
+J looks extremely calm and serious. He definitely understands the current situation and is trying to find the best solution.
+
+"J, we need to go. We need to go back to base, grab weapons, and let people know about this!!! "
+
+"Hold on Gray, we will all get surrounded by those braindead nuts, I have a better plan, you should go back to let your friend and my people know about this, you are brilliant and must stay alive."
+
+"Don't tell me you are going to..."
+
+"We don't have time!"
+
+J quickly swings his arm,  immediately, the blood is flying out from that corrupted, and J makes incredible laughs, it sounds like crazy, but somehow, I can sense resignment and sorrow from this laugh.
+
+I take out the my pistol, which I prepared for Rogar, shoot the last bullet into the zombie next to the J, and run as quickly as I can with the scouts.
 
 *******[Run back to base and ring the alarm.]
 \-- Roger's Point of View --
-You run to the front
+
+You run to the front gate with William, and check around to see if Gray is here. 
+
+It doesn't take too long to find Gray talking to the Militia. Once he sees you, his face is full of surprise, and then quickly it goes back to normal, he walked to you.
+
+"What brings you here, my dear Boss? Are you going to make friends with zombies?"
+
+"Bad joke, Gray. I can't stay behind when you guys are fighting on the front, where is Mr. J?"
+
+You notice the community leader Mr. J is not here. He was supposed to be here with Gray. 
+
+"We are gathering people to help him, he was fighing zombies and let us get back to inform people here. If we fight back now, he..."
+
+"He will be alive, no one can kill a released beast", William seriously looks at his gun and runs to the forest without turning back.
+
+You move forward and try to follow where William goes. Gray hands you a pistol, and gives you eye contact; you know you need to hurry.
 
 ********[Keep running and give a glance at the pistol he handed to you.]
-The pistol has no ammo
+The pistol has no ammo in it, but it has a mark. You remember the mark, it was your company's logo, and that special golden grip. That's your gun.
+
+You are confused not only by the flashback memory about this gun, but also by Gray's action. But now, it's not a right time for this.
+
+"It's close!" Gray says.
+
+Pap pap Pap pap Pap pap!
+
+A couple seconds later, you see the most impressive scene in your life. There are some hills formed by the corpses of the zombies. The piles of fallen leaves looks like the decoration of this scene of death. There are two men in the middle of the hill, just like the time you woke up and met Gray. The crazy man bent his foot and his back looks like it is loaded by the weight of the lives. A serious but kind man you know is standing next to him with double-handed guns, their mouths curved up but don't make any sound of laugh.
 
 *********[It's time for the counterattack.]
-Night time, zombies'
+At night time, the zombies' threat has been cleared. 
+
+You sit next to the fire and see people are dancing for the victory.
+
+William's daughter is holding a teddy bear and treats it like a treasure.
+
+You are waiting to a man you are talk to, but it's weird because normally, he will joke around without hesitating.
+
+You stand up and try to look for your friend. There are lot of things you want to ask.
+
+About the pistol, about him, and about yourself.
+
+But you can't find him anywhere.
+
+You are tired, and finally, you go back to your place to sleep.
+
+Than you notice there is something on your bed.
 
 **********[Read the letter.]
 "
 Date: 7/6
 Target: Cleared
+Status: None
+
+I start believing what you said at that time, and my job is done. I will start my own journey from now on. We will see again if you don't die.
+
+Gray
+"
+
+
+Once you read the last sentance, you got part of your memory back, you look at the mirror,and then laught at yourself,
+
+and then just like last time, you put one bullet in that pistol agian, and carefully put it back to your bag.
 
 \-- Normal End: Counterattack -- //i just wanna name the endings, okay??!!
 ->END
