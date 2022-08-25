@@ -609,7 +609,7 @@ Once you read the last sentance, you got part of your memory back, you look at t
 
 and then just like last time, you put one bullet in that pistol agian, and carefully put it back to your bag.
 
-\-- Normal End: Counterattack -- //i just wanna name the endings, okay??!!
+\-- Good End: Counterattack -- //i just wanna name the endings, okay??!!
 ->END
 
 ->END

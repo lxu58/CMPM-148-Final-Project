@@ -27,9 +27,9 @@ VAR playerHealth = 10
 The Last Hope
 * [Begin Game]
     -> intro
-*[Begin Game (Skip Intro)]
+* [Begin Game (Skip Intro)]
     ->intro_shopping_mall
-*[cheat: skip to end]
+* [cheat: skip to end]
     ->defensive_day_4
 ->END
 
