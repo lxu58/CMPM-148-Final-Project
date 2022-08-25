@@ -29,6 +29,8 @@ The Last Hope
     -> intro
 *[Begin Game (Skip Intro)]
     ->intro_shopping_mall
+*[cheat: skip to end]
+    ->defensive_day_4
 ->END
 
 == day_loop

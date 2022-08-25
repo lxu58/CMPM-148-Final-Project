@@ -343,7 +343,7 @@ However, you just made a new friend, and his daughter's innocent face still rema
 You think about your past, and you choose to...
 
 *[...run away from the base.]
-    Sadly you still choose the way which is most benificial to yourself.
+    Sadly you still choose the way which is most beneficial to yourself.
 
     But it's reasonable because you are a business man.
 
@@ -357,11 +357,11 @@ You think about your past, and you choose to...
     ->END
     
 *[...take stock of your materials.]
-    *[cheat: normal end]
+    **[cheat: normal end]
         ->defensive_1_normal_end
-    *[cheat: good end]
+    **[cheat: good end]
         ->defensive_1_good_end
-    *[just continue]
+    **[just continue]
         {scoreboard_community_score < 20:
             //is this a thing??
             -> defensive_death
