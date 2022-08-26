@@ -1,6 +1,6 @@
 # CMPM-148-Final-Project
 
-Note: The following content is same as content in TheLastHope.writeup
+Note: The following content is same as content in TheLastHope.writeup.
 
 
 -Title - The Last Hope
@@ -19,22 +19,22 @@ Note: The following content is same as content in TheLastHope.writeup
 
     Postscript by Laihong (skip this if you have no interest):
     For detailed story, characters, routes, and world setup you can see 
-    https://jamboard.google.com/d/1xsHuawjF7x2fIhaO6PGTuZsM1Sb96ptWH3fNOQWgkgM/viewer?f=0
-    I made a world based on how we plan, but we run out of time becasue of the lack of the management in first two weeks, the plan of the story is about 50k words long and every route is about 80k, but at the end, we only made one community (one route), and I am trying to make this as much details as possible for player to understand the world I am making. The exploring cycle and events are made by Pengfei, it has some conflict against the setting up, also since we don't have time to do second polishing, the story might have some conflict too. It's totally understandable and also we all did as much as we can within the time we have. Despite of that, it was so fun for me to make a story with the theme of zombie dystopia. I was so panicing making something without adventure and romantic because those are something I usually plan and write (my comfort room), but it's totally worthwhile to think about this story and write them done.
+    https://jamboard.google.com/d/1xsHuawjF7x2fIhaO6PGTuZsM1Sb96ptWH3fNOQWgkgM/viewer?f=0 or the story_graph_1 and 2 files.
+    I made a world based on how we plan, but we run out of time because of the lack of the management in first two weeks, the plan of the story is about 50k words long and every route is about 8k, but at the end, we only made one community (one route), and I am trying to make this as much details as possible for player to understand the world I am making. The exploring cycle and events are made by Pengfei, it has some conflict against the setting up, also since we don't have time to do second polishing, the story might have some conflict too. It's totally understandable and also we all did as much as we can within the time we have. Despite of that, it was so fun for me to make a story with the theme of zombie dystopia. I was so panicking making something without adventure and romantic because those are something I usually plan and write (my comfort room), but it's totally worthwhile to think about this story and write them done.
 
 
 
 
 -Experience Goal - describing the player experience goal
 
-    includes themes of construction, survival, exploring, and relationship building. The goal is to make the player be more rational and stressed by making choices that will impact the end goal as well as making them experience the thrill of surviving zombies’ attacks, and enjoy the different ending through the decision made by themselves
+    Includes themes of construction, survival, exploring, and relationship building. The goal is to make the player be more rational and stressed by making choices that will impact the end goal as well as making them experience the thrill of surviving zombies’ attacks, and enjoy the different ending through the decision made by themselves.
 
 
 -Narrative Stance and Rationale - how the story structure/architecture shapes its meaning
 
-    The story majorly talks in a third person style, but once it enters the final chapter, it may switch to the first person to “Roger” or “Gray to modify the characters’ change. Normally, the focal point is Roger, but it changes base the the story line. The narrator is unreliable (such as memory lost). also the sub ending (normal ending)  is used as supplementary events to make players to understand the truth of the story.
+    The story majorly talks in a second-person style, but once it enters the final chapter, it may switch to the first person to “Roger” or “Gray to modify the characters’ change. Normally, the focal point is Roger, but it changes base the the story line. The narrator is unreliable (such as memory lost). also the sub ending (normal ending) is used as supplementary events to make players to understand the truth of the story.
 
-    The unreliable narrator push players to search for supplementary events to understand the truth. Every ending has important and unique message about the truth, but none of them will reveal the truth itself on that route.
+    The unreliable narrator (amnesia) pushes players to search for supplementary events to understand the truth. Every ending has important and unique message about the truth, but none of them will reveal the truth itself on that route.
 
 -Story Structure (graphs) - describing the tools Inks provides were used in your game
 
@@ -63,7 +63,9 @@ Note: The following content is same as content in TheLastHope.writeup
 
 -Ink affordances: Text/Code
 
-    example:
+	We made use of threads to make storylets and tunneling for various repeated text.Stitches were occasionally used in places where we needed to divert to a specific point in a knot.
+
+----example 1:
 
     You pass through the main doors of the train station.
     Date: 7/2/2030
@@ -93,12 +95,127 @@ Note: The following content is same as content in TheLastHope.writeup
     Storylet properties include time, location, and repeatability.
 
 
+----example 2:
+
+	== function convertRecalculateCommunityResources()
+	~ convertInventoryToCommunityScore()
+	~ convertInventoryToFoodWaterEssentials()
+
+	~ convertFoodWaterMiscToEssentials()
+
+	~ recalculateCommunityScore()
+	
+	explain:
+	Here uses functions to convert inventory items to community resources and score.
+
+----example 3:
+	//put threads to storylet descriptions here
+	== storylets(->ret)
+	//storylets that can disable other storylets MUST go above the ones they disable
+	<- defensive_night_1_description(ret)
+	<- defensive_day_2_description(ret)
+	<- defensive_night_2_description(ret)
+	<- defensive_night_3_description(ret)
+
+	<- wait_storylet_description(ret)
+	<- rest_storylet_description(ret)
+	<- status_storylet_description(ret)
+	<- first_aid_storylet_description(ret)
+	//<- scavenge_storylet_description(ret)
+	<- military_scavenge_storylet_description(ret)
+	<- military_underground_scavenge_storylet_description(ret)
+	<- train_station_scavenge_storylet_description(ret)
+	<- residential_scavenge_storylet_description(ret)
+	<- mall_scavenge_storylet_description(ret)
+	
+	//<- simple_chance_storylet_description(ret)
+	~ storylets_enabled = true //re-enable storylets
+	->DONE
+
+	explain:
+	Here we are using threads to implement storylets. (Storylets are enabled at the end in case a storylet disables other storylets for a loop. Commented-out storylets were for testing purposes.)
 
 
+----example 4:
+
+	== travel_actions(->ret)
+	+ {canTravel(home)} [Go home.]
+		With practiced steps, you follow the road back to the base.
+		-> travel(home) ->
+	+ {canTravel(military_base)} [Go to the military base.]
+		You start heading towards the entrance to San Tose, the military base.
+		-> travel(military_base) ->
+	+ {canTravel(train_station)} [Go to the train station entrance.]
+		You walk toward the train station.
+		-> travel(train_station) ->
+	+ {canTravel(residential_district)} [Go to the residential district.]
+		You travel to the residential district.
+		-> travel(residential_district) ->
+	+ {canTravel(shopping_mall)} [Go to the shopping mall.]
+		You take the main road to the shopping mall.
+		-> travel(shopping_mall) ->
+	+ {canTravel(warehouse)} [Go to the warehouse.]
+		You head inside one of the warehouses without making a sound.
+		-> travel(warehouse) ->
+	+ {canTravel(underground)} [Go into the upper underground tunnels.]
+		You delve into the tunnels underneath the military base.
+		-> travel(underground) ->
+	+ {canTravel(underground_deep)} [Go into the lower underground tunnels.]
+		With tentative steps, you venture further underground.
+		-> travel(underground_deep) ->
+	+ {canTravel(train_station_inside)} [Go inside the train station.]
+		You pass through the main doors of the train station.
+		-> travel(train_station_inside) ->
+	+ {canTravel(train_station_upstairs)} [Go upstairs.]
+		You climb the stairs to the upper levels.
+		-> travel(train_station_upstairs) ->
+	+ {canTravel(1_story_house)} [Go to the one-story house.]
+		You enter the one story house through an open window.
+		-> travel(1_story_house) ->
+	+ {canTravel(2_story_house)} [Go to the two-story house.]
+		The door to the two story house has broken down, so it is easy to enter.
+		-> travel(2_story_house) ->
+	+ {canTravel(mall_left_wing)} [Go to the left wing.]
+		You make your way to the left wing of the mall.
+		-> travel(mall_left_wing) ->
+	+ {canTravel(mall_right_wing)} [Go to the right wing.]
+		You go to the right wing of the mall.
+		-> travel(mall_right_wing) ->
+	- ->ret
+
+	explain:
+	Tunnels are used throughout in places where text needs to be displayed as part of another section. This part, which shows travel text and then tunnels to the travel "function" is one.
+	There were a lot of pieces of code that felt like they should have been functions, but needed to divert. In this case, travel(location) needs to tunnel to passTime(hours), which needs to be able to divert when a random encounter occurs.
+	
+	
+----example 5:
+
+	== passTime(hours)
+	-> passTimeStart(hours)
+	= passTimeStart(hours)
+	{hours > 0:
+	~ temp totalHours = time_currentTime + hours
+	~ temp numDays = FLOOR(totalHours / 24)
+	~ temp numHours = totalHours % 24
+
+	~ time_daysGone += numDays
+	~ time_currentTime = numHours
+	-> storyletsPassTime(hours) ->
+
+	//this will happen after any travel, including the 4 main locations
+	//still, i think it's better than putting encounter chance in every storylet
+	-> chance_encounter(10, ->passTime.passTimeEnd)
+	}
+	-> passTimeEnd
+	= passTimeEnd
+	->->
+	
+	explain:
+	Here is a use of stitches to be able to divert to part of a knot. In this case, I wanted passTime(hours), as a tunnel, to return from where it is called, so I made combat divert back to it. Since I can't have passTime(hours) be called again, I used a stitch to divert to the end of the knot.
 
 -Discourse Example/Demonstration
 
-    example 1:
+----example 1:
 
     You are fighting a zombie.
     {RANDOM(1,100) <= playerDodgeChance:
@@ -119,7 +236,7 @@ Note: The following content is same as content in TheLastHope.writeup
     The result may lead players to different ending.
 
 
-    example 2:
+----example 2:
 
     *[...take stock of your materials.]
     {scoreboard_community_score < 50:
@@ -138,7 +255,7 @@ Note: The following content is same as content in TheLastHope.writeup
     They won’t know until the end of the day
 
 
-    example 3:
+----example 3:
     
     Then quickly he walks to you,  picks up your stuff, and put them on his shoulder.
     "Thank you man!"
@@ -153,16 +270,67 @@ Note: The following content is same as content in TheLastHope.writeup
     This helps the player to easily understand and notice “this is the story”. Since we have day/night cycle that embedded, we want player to take some break and enjoy the story
 
 
+----example 4:
+	
+	== day_loop
+	//~ checkTime()
+	//{time_currentTime}
+	-> ui_display -> //only displays in loops anyway
+	//{currentLocation}
+	~ describeCurrentLocation()
+
+	<-storylets(->day_loop) //display choices for active storylets, pass divert param to return to loop
+	<-travel_actions(->day_loop) //display navigation actions
+	~travelBlocked = false //unblock travel after 1 loop
+	->DONE
+
+	explain:
+	This is the day/night cycle code which shows the active storylets and places the player can travel, as well as important info from the ui_display tunnel, such as the date, time of day, and how much ammo the player has.
 
 
+----example 5:
+	
+	//props, and range of time it is available, time until it can be repeated, time storylet was last played
+	VAR statusStoryletProps = (repeatable, anywhere)
+	VAR statusStoryletStart = 0
+	VAR statusStoryletEnd = 24
+	VAR statusStoryletCooldown = 0
+	VAR statusStoryletTimeSincePlayed = 25
 
+	== status_storylet_time(hours)
+	~ statusStoryletTimeSincePlayed += hours
+	->->
+
+	== status_storylet_description(->ret)
+	{ StoryletPropTest(statusStoryletProps, status_storylet_body, statusStoryletStart, statusStoryletEnd, statusStoryletCooldown, statusStoryletTimeSincePlayed, true):
+		+ [Check your status.]
+			-> status_storylet_body ->
+			~ statusStoryletTimeSincePlayed = 0
+		-> ret
+	}
+	-> DONE
+
+	== status_storylet_body
+	+[Check health.]
+		Health: {playerHealth}
+	+[Check inventory.]
+		-> displayInventory ->
+	+[Check how many days have passed.]
+		Days Passed: {time_daysGone}
+	+[Check how many zombies you have fought.]
+		Zombies Encountered: {scoreboard_zombiesEncountered}
+		Zombies Killed: {scoreboard_zombiesKilled}
+	- ->->
+	
+	explain:
+	This is an example of a storylet. It is repeatable and shown everywhere since the player can check their status whenever they want as much as they want during the day/night loop. statusStoryletStart and End are properties saying what time in the day ther storylet is available. statusStoryletCooldown, statusStoryletTimeSincePlayed, and status_storylet_time(hours) are there as a way to not let the player repeat a storylet until a certain amount of ingame time has passed. We didn't really end up using this.
 
 -Something Cool
 
 Day/Night circle
-Randomness
-Every route has different supplementary events help u understand the story on different side (for example, normal ending different explains the teddy bear gift, but in good ending, teddy got explained)
-Every route has different constituent events too, but player can see what makes the story different due to the different action at the end of the day.
+Randomness (in scavenging loot and zombie encounters)
+Every route has different supplementary events that help you understand the story on different sides (for example, normal ending different explains the teddy bear gift, but in good ending, teddy got explained.)
+Every route has different constituent events too, but the player can see what makes the story different due to the different action at the end of the day.
 (by Julian’s comments)
 Detailssss (bullet in gun, teddy bear)
 
